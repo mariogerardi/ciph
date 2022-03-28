@@ -1,13 +1,17 @@
 import * as React from 'react';
 import { StyleSheet, Button, SafeAreaView, Text } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 
-function HomeScreen({ navigation }) {
+function HomeScreen() {
+
+    const navigation = useNavigation();
+
     return (
         <SafeAreaView style={styles.home}>
             <Text style={styles.logo}>WordGame</Text>
             <Button
-                title="Go to Details"
-                onPress={() => navigation.navigate('Details')}
+                title="Levels"
+                onPress={() => navigation.navigate('Select')}
             />
         </SafeAreaView>
     );
