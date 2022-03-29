@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
 import * as React from 'react';
+import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, SafeAreaView, View, Text, Pressable, Image, TextInput } from 'react-native';
 
 function Level({route}) {
@@ -26,7 +26,7 @@ function Level({route}) {
         clue3: ["?", "?", "!", "!", "T", "V", "!", "!"], 
         clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
         clueHints: ["1. A European archipelago", "2. This country borders Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
-        }
+        },
     ];
 
     let value = route.params.index + 1;
@@ -50,6 +50,93 @@ function Level({route}) {
         )
     }
 
+    function answerBox() {
+        return (
+            <View style={styles.answer}>
+                <View style={styles.inputBox}>
+                    <TextInput
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId1} 
+                        onChangeText={text => {if (text !== "") inputId2.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId1.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId2} 
+                        onChangeText={text => {if (text !== "") inputId3.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId1.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId3} 
+                        onChangeText={text => {if (text !== "") inputId4.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId2.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId4} 
+                        onChangeText={text => {if (text !== "") inputId5.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId3.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId5} 
+                        onChangeText={text => {if (text !== "") inputId6.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId4.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId6} 
+                        onChangeText={text => {if (text !== "") inputId7.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId5.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId7} 
+                        onChangeText={text => {if (text !== "") inputId8.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId6.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+                <View style={styles.inputBox}>
+                    <TextInput 
+                        style={styles.letterInput} 
+                        maxLength={1} 
+                        ref={inputId8} 
+                        onChangeText={text => {if (text !== "") inputId8.current.focus()}} 
+                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId7.current.focus()}}}
+                        autoCorrect="false">    
+                    </TextInput>
+                </View>
+            </View>
+        )
+    }
+
     return (
         <SafeAreaView>
             <View style={styles.header}>
@@ -65,80 +152,8 @@ function Level({route}) {
             </View>
             <Text style={styles.levelId}>Level {value}</Text>
             {levelTheme()}
-            <View style={styles.answer}>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId1} 
-                        onChangeText={text => {if (text !== "") inputId2.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId1.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId2} 
-                        onChangeText={text => {if (text !== "") inputId3.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId1.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId3} 
-                        onChangeText={text => {if (text !== "") inputId4.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId2.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId4} 
-                        onChangeText={text => {if (text !== "") inputId5.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId3.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId5} 
-                        onChangeText={text => {if (text !== "") inputId6.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId4.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId6} 
-                        onChangeText={text => {if (text !== "") inputId7.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId5.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId7} 
-                        onChangeText={text => {if (text !== "") inputId8.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId6.current.focus()}}}>    
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput 
-                        style={styles.letterInput} 
-                        maxLength={1} 
-                        ref={inputId8} 
-                        onChangeText={text => {if (text !== "") inputId8.current.focus()}} 
-                        onKeyPress={({nativeEvent}) => {if (nativeEvent.key === 'Backspace') {inputId7.current.focus()}}}>    
-                    </TextInput>
-                </View>
-            </View>
+            {answerBox()}
+            
         </SafeAreaView>
     );
 }
