@@ -18,7 +18,7 @@ function level() {
                         style={styles.level} 
                         key={index}
                         onPress={() => navigation.navigate('Level', {
-                            index: value
+                            index: index
                         })}
                     >
                         <Text style={styles.id}>{value}</Text>
