@@ -29,13 +29,13 @@ function Level({ route }) {
         },
         {
             puzzleId: 3,
-            theme: "Countries",
-            answer: ["M", "A", "L", "A", "Y", "S", "I", "A"],
-            clue1: ["!", "!", "!", "T", "A", "?", "?", "?"],
-            clue2: ["?", "?", "!", "!", "O", "!", "?", "?"],
-            clue3: ["?", "?", "!", "!", "T", "V", "!", "!"],
-            clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
-            clueHints: ["1. A European archipelago", "2. This country borders Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
+            theme: "Mythical Creatures",
+            answer: ["W", "E", "R", "E", "W", "O", "L", "F"],
+            clue1: ["?", "?", "?", "?", "?", "E", "!", "!"],
+            clue2: ["O", "G", "!", "!", "?", "?", "?", "?"],
+            clue3: ["?", "?", "?", "T", "R", "!", "!", "L"],
+            clue4: ["N", "!", "!", "!", "I", "D", "?", "?"],
+            clueHints: ["1. A pointy-eared humanoid being", "2. A large humanoid being with great strength", "3. A magical creature that lives in the hills", "4. A sea nymph of the Mediterranean"],
         },
     ];
 
@@ -58,7 +58,6 @@ function Level({ route }) {
         )
     }
 
-
     function numberify1(j) {
         let firstIndex = puzzles[route.params.index].clue1.indexOf("?")
         let lastIndex = puzzles[route.params.index].clue1.lastIndexOf("?")
@@ -66,7 +65,7 @@ function Level({ route }) {
             puzzles[route.params.index].clue1.splice(3, 1, j)
         }
         if (firstIndex === 0 && lastIndex === 4) {
-            puzzles[route.params.index].clue1.splice(3, 1, j)
+            puzzles[route.params.index].clue1.splice(4, 1, j)
         }
         if (lastIndex < 4 && puzzles[route.params.index].clue1[lastIndex + 1] !== "?") {
             puzzles[route.params.index].clue1.splice(lastIndex, 1, j)
@@ -81,7 +80,7 @@ function Level({ route }) {
                 puzzles[route.params.index].clue1.splice(lastIndex - 1, 1, j)
             } else if (puzzles[route.params.index].clue1[firstIndex + 2] !== "?") {
                 puzzles[route.params.index].clue1.splice(firstIndex + 1, 1, j)
-            } 
+            }
         }
     }
 
@@ -107,7 +106,7 @@ function Level({ route }) {
                 puzzles[route.params.index].clue2.splice(lastIndex - 1, 1, j)
             } else if (puzzles[route.params.index].clue2[firstIndex + 2] !== "?") {
                 puzzles[route.params.index].clue2.splice(firstIndex + 1, 1, j)
-            } 
+            }
         }
     }
 
@@ -133,7 +132,7 @@ function Level({ route }) {
                 puzzles[route.params.index].clue3.splice(lastIndex - 1, 1, j)
             } else if (puzzles[route.params.index].clue3[firstIndex + 2] !== "?") {
                 puzzles[route.params.index].clue3.splice(firstIndex + 1, 1, j)
-            } 
+            }
         }
     }
 
@@ -159,7 +158,7 @@ function Level({ route }) {
                 puzzles[route.params.index].clue4.splice(lastIndex - 1, 1, j)
             } else if (puzzles[route.params.index].clue4[firstIndex + 2] !== "?") {
                 puzzles[route.params.index].clue4.splice(firstIndex + 1, 1, j)
-            } 
+            }
         }
     }
 
@@ -616,7 +615,7 @@ const styles = StyleSheet.create({
         marginLeft: 25,
     },
     hints: {
-        marginHorizontal: 15,
+        marginHorizontal: 25,
         marginTop: 15,
     },
     hint: {
