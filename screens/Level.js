@@ -366,7 +366,14 @@ function Level({ route }) {
         }
         if (puzzles[route.params.index].clue1[index] === "!") {
             return (
-                <View style={styles.inputBox}></View>
+                <View style={styles.inputBox}>
+                    <TextInput
+                        autoCapitalize = {"characters"}
+                        style={styles.letterInputLight}
+                        maxLength={1}
+                        autoCorrect={false}>
+                    </TextInput>
+                </View>
             )
         }
         if (typeof puzzles[route.params.index].clue1[index] === "number") {
@@ -418,7 +425,14 @@ function Level({ route }) {
         }
         if (puzzles[route.params.index].clue2[index] === "!") {
             return (
-                <View style={styles.inputBox}></View>
+                <View style={styles.inputBox}>
+                    <TextInput
+                        autoCapitalize = {"characters"}
+                        style={styles.letterInputLight}
+                        maxLength={1}
+                        autoCorrect={false}>
+                    </TextInput>
+                </View>
             )
         }
         if (typeof puzzles[route.params.index].clue2[index] === "number") {
@@ -470,7 +484,14 @@ function Level({ route }) {
         }
         if (puzzles[route.params.index].clue3[index] === "!") {
             return (
-                <View style={styles.inputBox}></View>
+                <View style={styles.inputBox}>
+                    <TextInput
+                        autoCapitalize = {"characters"}
+                        style={styles.letterInputLight}
+                        maxLength={1}
+                        autoCorrect={false}>
+                    </TextInput>
+                </View>
             )
         }
         if (typeof puzzles[route.params.index].clue3[index] === "number") {
@@ -522,7 +543,14 @@ function Level({ route }) {
         }
         if (puzzles[route.params.index].clue4[index] === "!") {
             return (
-                <View style={styles.inputBox}></View>
+                <View style={styles.inputBox}>
+                    <TextInput
+                        autoCapitalize = {"characters"}
+                        style={styles.letterInputLight}
+                        maxLength={1}
+                        autoCorrect={false}>
+                    </TextInput>
+                </View>
             )
         }
         if (typeof puzzles[route.params.index].clue4[index] === "number") {
@@ -879,6 +907,14 @@ const styles = StyleSheet.create({
         fontWeight: "400",
         textAlign: 'center'
     },
+    letterInputLight: {
+        width: 42,
+        fontSize: 24,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "400",
+        textAlign: 'center',
+        color: '#999'
+    },
     numberInputRight: {
         fontSize: 18,
         marginRight: 25,
@@ -916,8 +952,8 @@ const styles = StyleSheet.create({
     hint: {
         color: 'white',
         marginVertical: 2.5,
-        paddingLeft: 10,
-        fontSize: 16,
+        paddingHorizontal: 10,
+        fontSize: 15,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
     },
