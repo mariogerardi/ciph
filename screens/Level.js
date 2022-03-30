@@ -1,8 +1,11 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput, Alert } from 'react-native';
-import { withSafeAreaInsets } from 'react-native-safe-area-context';
-import { useEffect } from 'react/cjs/react.production.min';
+import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput } from 'react-native';
+
+const easy = '#30C47C'
+const medium = '#70ACE5'
+const hard = '#C460DC'
+const very_hard = '#403C95'
 
 function Level({ route }) {
 
@@ -17,7 +20,7 @@ function Level({ route }) {
             clue2: ["?", "!", "!", "O", "P", "!", "R", "D"],
             clue3: ["!", "!", "K", "?", "?", "?", "?", "?"],
             clue4: ["?", "?", "?", "?", "!", "!", "W", "K"],
-            clueHints: ["1. A female chicken", "2. A type of large cat", "3. A species in the deer family", "4. A large bird"],
+            clueHints: ["1. A domesticated female bird", "2. Can reach speeds of up to 36 miles per hour", "3. One of the largest species in the deer family", "4. A bird of prey"],
         },
         {
             puzzleId: 2,
@@ -38,6 +41,16 @@ function Level({ route }) {
             clue3: ["?", "?", "?", "T", "R", "!", "!", "L"],
             clue4: ["N", "!", "!", "!", "I", "D", "?", "?"],
             clueHints: ["1. A pointy-eared humanoid being", "2. A large humanoid being with great strength", "3. A magical creature that lives in the hills", "4. A sea nymph of the Mediterranean"],
+        },
+        {
+            puzzleId: 4,
+            theme: "Musical Instruments",
+            answer: ["M", "A", "N", "D", "O", "L", "I", "N"],
+            clue1: ["?", "?", "V", "I", "!", "!", "!", "!"],
+            clue2: ["B", "!", "!", "J", "!", "?", "?", "?"],
+            clue3: ["H", "!", "!", "!", "P", "A", "N", "?"],
+            clue4: ["?", "?", "O", "B", "!", "E", "?", "?"],
+            clueHints: ["1. A four-stringed instrument", "2. A five-stringed instrument", "3. A subset of steelpan instruments", "4. A double-reed woodwind instrument"],
         },
     ];
 
@@ -170,6 +183,7 @@ function Level({ route }) {
             <View style={styles.answerRow}>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -181,6 +195,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -192,6 +207,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -203,6 +219,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -214,6 +231,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -225,6 +243,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -236,6 +255,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -247,6 +267,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        editable = {true}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -515,12 +536,6 @@ function Level({ route }) {
                     {clue4(6)}
                     {clue4(7)}
                 </View>
-                <View style={styles.hints}>
-                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
-                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
-                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
-                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
-                </View>
             </View>
         )
     }
@@ -576,11 +591,11 @@ function Level({ route }) {
     function check() {
         let yourNewAnswer = yourAnswer.join("")
         let theRightAnswer = puzzles[route.params.index].answer.join("")
-        if (yourNewAnswer === theRightAnswer) {
+        if (yourNewAnswer.toUpperCase() === theRightAnswer) {
             console.log("Well, you're right... now what?")
             conGratULaTions();
         }
-        if (yourNewAnswer !== theRightAnswer) {
+        if (yourNewAnswer.toUpperCase() !== theRightAnswer) {
             console.log("Your answer was " + yourNewAnswer + ". The correct answer was " + theRightAnswer + ". Almost!")
         }
     }
@@ -608,8 +623,19 @@ function Level({ route }) {
                 <Text style={styles.levelId}>Level {value}</Text>
             </View>
             {levelTheme()}
+            <View style={styles.divider}></View>
             {allTheClues()}
             <View style={styles.divider}></View>
+            <View style={styles.hints}>
+                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
+                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
+                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
+                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
+            </View>
+            <View style={styles.divider}></View>
+            <View style={styles.status}>
+
+            </View>
         </ScrollView>
     );
 }
@@ -629,35 +655,41 @@ const styles = StyleSheet.create({
         left: 25,
     },
     levelId: {
-        marginTop: 12,
+        marginTop: 3,
         alignSelf: 'center',
-        fontSize: 30,
+        fontSize: 40,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "600",
     },
     themeBox: {
-        height: 105,
+        height: 125,
         marginHorizontal: 7.5,
-        backgroundColor: '#70ACE5',
+        backgroundColor: easy,
         display: 'flex',
         justifyContent: 'center',
-        borderRadius: 5
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
     },
     themeText: {
-        fontSize: 30,
-        alignSelf: 'center'
+        fontSize: 36,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "600",
+        color: 'white',
+        alignSelf: 'center',
+        marginTop: 5,
+        marginBottom: 10,
     },
     answerRow: {
         display: 'flex',
         flexDirection: 'row',
         marginHorizontal: 7.5,
-        marginTop: 10,
+        marginTop: 0,
         justifyContent: 'space-between'
     },
     clues: {
-        backgroundColor: '#30C47C',
+        backgroundColor: medium,
         marginHorizontal: 7.5,
         paddingVertical: 5,
-        borderRadius: 5,
-        marginTop: 10,
     },
     clueRow: {
         display: 'flex',
@@ -669,7 +701,7 @@ const styles = StyleSheet.create({
     inputBox: {
         width: 42,
         height: 42,
-        backgroundColor: '#e0e0e0',
+        backgroundColor: '#f9f9f9',
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
@@ -688,58 +720,48 @@ const styles = StyleSheet.create({
         height: 42,
     },
     letterInput: {
-        fontSize: 20,
+        fontSize: 24,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "400",
     },
     numberInputRight: {
-        fontSize: 14,
+        fontSize: 18,
         marginRight: 30,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "500",
+        color: 'white'
     },
     numberInputLeft: {
-        fontSize: 14,
+        fontSize: 18,
         marginLeft: 30,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "500",
+        color: 'white'
     },
     hints: {
-        marginHorizontal: 10,
-        marginVertical: 5,
+        backgroundColor: '#C460DC',
+        marginHorizontal: 7.5,
+        paddingVertical: 7.5,
     },
     hint: {
-        padding: 3,
-        fontSize: 15
+        color: 'white',
+        marginVertical: 2.5,
+        paddingLeft: 10,
+        fontSize: 16,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "500",
+    },
+    status: {
+        backgroundColor: '#403C95',
+        marginHorizontal: 7.5,
+        height: 200,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
     },
     divider: {
         width: '96%',
-        marginTop: 10,
         alignSelf: 'center',
         borderBottomWidth: 1,
-        borderBottomColor: 'grey'
-    },
-    buttonBox: {
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        marginTop: 7.5,
-        marginHorizontal: 5
-    },
-    formButtonClear: {
-        width: 180,
-        backgroundColor: 'red',
-        paddingVertical: 20,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    formButtonSubmit: {
-        width: 180,
-        backgroundColor: 'green',
-        paddingVertical: 20,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        borderRadius: 5,
-    },
-    buttonText: {
-        color: 'white',
-        fontSize: 20,
+        borderBottomColor: 'white'
     }
 })

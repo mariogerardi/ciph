@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { StyleSheet, ScrollView, View, Text, Image, Pressable } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 function level() {
 
@@ -72,7 +71,7 @@ export default SelectScreen;
 
 const styles = StyleSheet.create({
     background: {
-        backgroundColor: '#e9e9e9'
+        backgroundColor: '#f9f9f9'
     },
     grid: {
         display: 'flex',
@@ -134,7 +133,8 @@ const styles = StyleSheet.create({
     },
     id: {
         color: '#e9e9e9',
-        fontSize: 28,
+        fontSize: 38,
+        fontFamily: 'KohinoorTelugu-Light'
     },
     header: {
         marginTop: 45,
