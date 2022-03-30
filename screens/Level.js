@@ -2,10 +2,15 @@ import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput } from 'react-native';
 
-const easy = '#30C47C'
-const medium = '#70ACE5'
-const hard = '#C460DC'
+const easy = '#30A47C'
+const medium = '#50ACE5'
+const hard = '#D4903C'
 const very_hard = '#403C95'
+
+const easy_header = '#30A47C'
+const medium_header = '#70ACE5'
+const hard_header = '#D4903C'
+const very_hard_header = '#403C95'
 
 function Level({ route }) {
 
@@ -21,7 +26,7 @@ function Level({ route }) {
             clue3: ["!", "!", "K", "?", "?", "?", "?", "?"],
             clue4: ["?", "?", "?", "?", "!", "!", "W", "K"],
             clueHints: ["1. A domesticated female bird", "2. Can reach speeds of up to 36 miles per hour", "3. One of the largest species in the deer family", "4. A bird of prey"],
-            theme: "Animals",
+            statusTitle: "Take a guess!",
             encouragement: "You got this!",
             funFact: "Elephants are the largest land animals on Earth!",
         },
@@ -34,6 +39,9 @@ function Level({ route }) {
             clue3: ["?", "?", "!", "!", "T", "V", "!", "!"],
             clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
             clueHints: ["1. A European archipelago", "2. This country shares a border with Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
+            statusTitle: "What's your guess?",
+            encouragement: "and no looking at any maps!",
+            funFact: "70% of the population of Malaysia is urban.",
         },
         {
             puzzleId: 3,
@@ -44,6 +52,9 @@ function Level({ route }) {
             clue3: ["?", "?", "?", "T", "R", "!", "!", "L"],
             clue4: ["N", "!", "!", "!", "I", "D", "?", "?"],
             clueHints: ["1. A pointy-eared humanoid being", "2. A large humanoid being with great strength", "3. A magical creature that lives in the hills", "4. A sea nymph of the Mediterranean"],
+            statusTitle: "and your answer is...",
+            encouragement: "...don't worry, I'm patient.",
+            funFact: "A werewolf's transformation is often associated with the appearance of a full moon.",
         },
         {
             puzzleId: 4,
@@ -54,6 +65,9 @@ function Level({ route }) {
             clue3: ["H", "!", "!", "!", "P", "A", "N", "?"],
             clue4: ["?", "?", "O", "B", "!", "E", "?", "?"],
             clueHints: ["1. A four-stringed instrument", "2. A five-stringed instrument", "3. A subset of steelpan instruments", "4. A double-reed woodwind instrument"],
+            statusTitle: "Compose an Answer...",
+            encouragement: "...or just play it by ear.",
+            funFact: "A werewolf's transformation is often associated with the appearance of the full moon.",
         },
     ];
 
@@ -70,11 +84,71 @@ function Level({ route }) {
 
     function levelTheme() {
         return (
-            <View style={styles.themeBox}>
+            <View style={themeDifficulty()}>
                 <Text style={styles.themeText}>{puzzles[route.params.index].theme}</Text>
                 {answerBox()}
             </View>
         )
+    }
+
+    function themeDifficulty() {
+        if (value < 21) {
+            return styles.themeBoxEasy;
+        }
+        if (value < 41) {
+            return styles.themeBoxMedium;
+        }
+        if (value < 61) {
+            return styles.themeBoxHard;
+        }
+        if (value < 81) {
+            return styles.themeBoxVeryHard;
+        }
+    }
+
+    function cluesDifficulty() {
+        if (value < 21) {
+            return styles.cluesEasy;
+        }
+        if (value < 41 && value > 20) {
+            return styles.cluesMedium;
+        }
+        if (value < 61 && value > 40) {
+            return styles.cluesHard;
+        }
+        if (value < 81 && value > 60) {
+            return styles.cluesVeryHard;
+        }
+    }
+
+    function hintsDifficulty() {
+        if (value < 21) {
+            return styles.hintsEasy;
+        }
+        if (value < 41 && value > 20) {
+            return styles.hintsMedium;
+        }
+        if (value < 61 && value > 40) {
+            return styles.hintsHard;
+        }
+        if (value < 81 && value > 60) {
+            return styles.hintsVeryHard;
+        }
+    }
+
+    function statusDifficulty() {
+        if (value < 21) {
+            return styles.statusEasy;
+        }
+        if (value < 41 && value > 20) {
+            return styles.statusMedium;
+        }
+        if (value < 61 && value > 40) {
+            return styles.statusHard;
+        }
+        if (value < 81 && value > 60) {
+            return styles.statusVeryHard;
+        }
     }
 
     function numberify1(j) {
@@ -494,7 +568,7 @@ function Level({ route }) {
 
     function allTheClues() {
         return (
-            <View style={styles.clues}>
+            <View style={cluesDifficulty()}>
                 <View style={styles.clueRow}>
                     {numberify1(1)}
                     {clue1(0)}
@@ -552,8 +626,6 @@ function Level({ route }) {
     const [letter7, setLetter7] = React.useState(null);
     const [letter8, setLetter8] = React.useState(null);
 
-    const [editable, setEditable] = React.useState(true)
-
     let yourAnswer = [letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8]
 
     function keepTrack(letterID, text) { 
@@ -598,16 +670,15 @@ function Level({ route }) {
         let theRightAnswer = puzzles[route.params.index].answer.join("")
         if (!letter1 || !letter2 || !letter3 || !letter4 || !letter5 || !letter6 || !letter7 || !letter8) {
             return (
-                <View style={styles.status}>
-                    <Text style={styles.statusTitle}>Don't be nervous!</Text>
-                    <Text style={styles.statusText}>Enter your answer above.</Text>
-                    <Text style={styles.statusText}>Give it a shot!</Text>
+                <View style={statusDifficulty()}>
+                    <Text style={styles.statusTitle}>{puzzles[route.params.index].statusTitle}</Text>
+                    <Text style={styles.statusText}>{puzzles[route.params.index].encouragement}</Text>
                 </View>
             )
         }
         if (letter1 && letter2 && letter3 && letter4 && letter5 && letter6 && letter7 && letter8 && yourNewAnswer.toUpperCase() !== theRightAnswer) {
             return (
-                <View style={styles.status}>
+                <View style={statusDifficulty()}>
                     <Text style={styles.statusTitle}>Not quite...</Text>
                     <Text style={styles.statusText}>{yourNewAnswer} is not the correct answer.</Text>
                     <Text style={styles.statusText}>Keep trying!</Text>
@@ -616,7 +687,7 @@ function Level({ route }) {
         }
         if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
             return (
-                <View style={styles.status}>
+                <View style={statusDifficulty()}>
                     <Text style={styles.statusTitle}>Congratulations!</Text>
                     <Text style={styles.statusText}>{yourNewAnswer} is the correct answer!</Text>
                     <Text style={styles.statusFunFact}>Fun fact: {puzzles[route.params.index].funFact}</Text>
@@ -650,7 +721,7 @@ function Level({ route }) {
                 >
                     <Image
                         style={styles.button}
-                        source={{ uri: "https://cdn3.iconfinder.com/data/icons/basic-user-interface-5/64/chevron_left_back_move_direction_arrow_arrows-256.png" }}
+                        source={require("../assets/arrow.png")}
                     />
                 </Pressable>
                 <Text style={styles.levelId}>Level {value}</Text>
@@ -659,7 +730,7 @@ function Level({ route }) {
             <View style={styles.divider}></View>
             {allTheClues()}
             <View style={styles.divider}></View>
-            <View style={styles.hints}>
+            <View style={hintsDifficulty()}>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
@@ -679,11 +750,12 @@ const styles = StyleSheet.create({
         marginTop: 45,
     },
     button: {
-        height: 50,
-        width: 50,
+        height: 55,
+        width: 55,
         position: 'absolute',
-        top: 5,
+        top: 4,
         left: 25,
+        transform: [{scaleX: -1}]
     },
     levelId: {
         marginTop: 3,
@@ -692,10 +764,37 @@ const styles = StyleSheet.create({
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "600",
     },
-    themeBox: {
+    themeBoxEasy: {
         height: 125,
         marginHorizontal: 7.5,
-        backgroundColor: easy,
+        backgroundColor: easy_header,
+        display: 'flex',
+        justifyContent: 'center',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    themeBoxMedium: {
+        height: 125,
+        marginHorizontal: 7.5,
+        backgroundColor: medium_header,
+        display: 'flex',
+        justifyContent: 'center',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    themeBoxHard: {
+        height: 125,
+        marginHorizontal: 7.5,
+        backgroundColor: hard_header,
+        display: 'flex',
+        justifyContent: 'center',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20
+    },
+    themeBoxVeryHard: {
+        height: 125,
+        marginHorizontal: 7.5,
+        backgroundColor: very_hard_header,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 20,
@@ -711,12 +810,12 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     statusTitle: {
-        fontSize: 36,
+        fontSize: 32,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "600",
         color: 'white',
         alignSelf: 'center',
-        marginTop: 20,
+        marginTop: 10,
     },
     answerRow: {
         display: 'flex',
@@ -725,8 +824,23 @@ const styles = StyleSheet.create({
         marginTop: 0,
         justifyContent: 'space-between'
     },
-    clues: {
+    cluesEasy: {
+        backgroundColor: easy,
+        marginHorizontal: 7.5,
+        paddingVertical: 5,
+    },
+    cluesMedium: {
         backgroundColor: medium,
+        marginHorizontal: 7.5,
+        paddingVertical: 5,
+    },
+    cluesHard: {
+        backgroundColor: hard,
+        marginHorizontal: 7.5,
+        paddingVertical: 5,
+    },
+    cluesVeryHard: {
+        backgroundColor: very_hard,
         marginHorizontal: 7.5,
         paddingVertical: 5,
     },
@@ -779,8 +893,23 @@ const styles = StyleSheet.create({
         fontWeight: "500",
         color: 'white'
     },
-    hints: {
-        backgroundColor: '#C460DC',
+    hintsEasy: {
+        backgroundColor: easy,
+        marginHorizontal: 7.5,
+        paddingVertical: 7.5,
+    },
+    hintsMedium: {
+        backgroundColor: medium,
+        marginHorizontal: 7.5,
+        paddingVertical: 7.5,
+    },
+    hintsHard: {
+        backgroundColor: hard,
+        marginHorizontal: 7.5,
+        paddingVertical: 7.5,
+    },
+    hintsVeryHard: {
+        backgroundColor: very_hard,
         marginHorizontal: 7.5,
         paddingVertical: 7.5,
     },
@@ -796,22 +925,43 @@ const styles = StyleSheet.create({
         color: 'white',
         marginVertical: 2.5,
         marginHorizontal: 22.5,
-        fontSize: 16.5,
+        fontSize: 20,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         alignSelf: 'center'
     },
     statusFunFact: {
         color: 'white',
-        marginVertical: 20,
-        marginHorizontal: 25,
-        fontSize: 15,
+        marginTop: 5,
+        marginHorizontal: 12,
+        fontSize: 16,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         alignSelf: 'center'
     },
-    status: {
-        backgroundColor: '#403C95',
+    statusEasy: {
+        backgroundColor: easy,
+        marginHorizontal: 7.5,
+        height: 200,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+    },
+    statusMedium: {
+        backgroundColor: medium,
+        marginHorizontal: 7.5,
+        height: 200,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+    },
+    statusHard: {
+        backgroundColor: hard,
+        marginHorizontal: 7.5,
+        height: 200,
+        borderBottomLeftRadius: 20,
+        borderBottomRightRadius: 20,
+    },
+    statusVeryHard: {
+        backgroundColor: very_hard,
         marginHorizontal: 7.5,
         height: 200,
         borderBottomLeftRadius: 20,

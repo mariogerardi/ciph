@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     button1: {
         width: 250,
         height: 75,
-        backgroundColor: '#30C47C',
+        backgroundColor: '#30A47C',
         borderRadius: 20,
         display: 'flex',
         alignItems: 'center',
@@ -62,7 +62,7 @@ const styles = StyleSheet.create({
     button2: {
         width: 250,
         height: 75,
-        backgroundColor: '#70ACE5',
+        backgroundColor: '#50ACE5',
         borderRadius: 20,
         display: 'flex',
         alignItems: 'center',
@@ -73,7 +73,7 @@ const styles = StyleSheet.create({
     button3: {
         width: 250,
         height: 75,
-        backgroundColor: '#C460DC',
+        backgroundColor: '#D4903C',
         borderRadius: 20,
         display: 'flex',
         alignItems: 'center',

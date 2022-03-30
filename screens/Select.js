@@ -57,7 +57,7 @@ function SelectScreen() {
                     >
                     <Image 
                         style={styles.button} 
-                        source={{uri: "https://cdn3.iconfinder.com/data/icons/basic-user-interface-5/64/chevron_left_back_move_direction_arrow_arrows-256.png"}}
+                        source={require("../assets/arrow.png")}
                     />
                 </Pressable>
             </View>
@@ -90,7 +90,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#30C47C'
+        backgroundColor: '#30A47C'
     },
     level2: {
         width: 75,
@@ -103,7 +103,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#70ACE5'
+        backgroundColor: '#50ACE5'
     },
     level3: {
         width: 75,
@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#C460DC'
+        backgroundColor: '#D4903C'
     },
     level4: {
         width: 75,
@@ -141,11 +141,12 @@ const styles = StyleSheet.create({
         height: 70,
     },
     button: {
-        height: 50,
-        width: 50,
+        height: 60,
+        width: 60,
         position: 'absolute',
-        top: 5,
+        top: 2.5,
         left: 25,
+        transform: [{scaleX: -1}]
     },
     bottom: {
         height: 50,
