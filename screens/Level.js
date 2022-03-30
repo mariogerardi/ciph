@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, SafeAreaView, View, Text, Pressable, Image, TextInput } from 'react-native';
+import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput, Alert } from 'react-native';
+import { withSafeAreaInsets } from 'react-native-safe-area-context';
+import { useEffect } from 'react/cjs/react.production.min';
 
 function Level({ route }) {
 
@@ -54,6 +56,7 @@ function Level({ route }) {
         return (
             <View style={styles.themeBox}>
                 <Text style={styles.themeText}>{puzzles[route.params.index].theme}</Text>
+                {answerBox()}
             </View>
         )
     }
@@ -167,81 +170,89 @@ function Level({ route }) {
             <View style={styles.answerRow}>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId1}
-                        onChangeText={text => { if (text !== "") inputId2.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus() } }}
+                        onChangeText={text => {keepTrack(1, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus(); setLetter1(null) } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId2}
-                        onChangeText={text => { if (text !== "") inputId3.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus() } }}
+                        onChangeText={text => {keepTrack(2, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus(); setLetter2(null) } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId3}
-                        onChangeText={text => { if (text !== "") inputId4.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId2.current.focus() } }}
+                        onChangeText={text => {keepTrack(3, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId2.current.focus(); setLetter3(null) } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId4}
-                        onChangeText={text => { if (text !== "") inputId5.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId3.current.focus() } }}
+                        onChangeText={text => {keepTrack(4, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId3.current.focus(); setLetter4(null)  } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId5}
-                        onChangeText={text => { if (text !== "") inputId6.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId4.current.focus() } }}
+                        onChangeText={text => {keepTrack(5, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId4.current.focus(); setLetter5(null)  } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId6}
-                        onChangeText={text => { if (text !== "") inputId7.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId5.current.focus() } }}
+                        onChangeText={text => {keepTrack(6, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId5.current.focus(); setLetter6(null)  } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId7}
-                        onChangeText={text => { if (text !== "") inputId8.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId6.current.focus() } }}
+                        onChangeText={text => {keepTrack(7, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId6.current.focus(); setLetter7(null) } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
+                        autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
                         ref={inputId8}
-                        onChangeText={text => { if (text !== "") inputId8.current.focus() }}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId7.current.focus() } }}
+                        onChangeText={text => {keepTrack(8, text)}}
+                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId7.current.focus(); setLetter8(null) } }}
                         autoCorrect={false}>
                     </TextInput>
                 </View>
@@ -504,12 +515,86 @@ function Level({ route }) {
                     {clue4(6)}
                     {clue4(7)}
                 </View>
+                <View style={styles.hints}>
+                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
+                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
+                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
+                    <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
+                </View>
             </View>
         )
     }
 
+    const [letter1, setLetter1] = React.useState(null);
+    const [letter2, setLetter2] = React.useState(null);
+    const [letter3, setLetter3] = React.useState(null);
+    const [letter4, setLetter4] = React.useState(null);
+    const [letter5, setLetter5] = React.useState(null);
+    const [letter6, setLetter6] = React.useState(null);
+    const [letter7, setLetter7] = React.useState(null);
+    const [letter8, setLetter8] = React.useState(null);
+
+    let yourAnswer = [letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8]
+
+    function keepTrack(letterID, text) { 
+        if (text !== "") { 
+            if (letterID === 1) {
+                setLetter1(text)
+                inputId2.current.focus() 
+            }
+            if (letterID === 2) {
+                setLetter2(text)
+                inputId3.current.focus() 
+            }
+            if (letterID === 3) {
+                setLetter3(text)
+                inputId4.current.focus() 
+            }
+            if (letterID === 4) {
+                setLetter4(text)
+                inputId5.current.focus() 
+            }
+            if (letterID === 5) {
+                setLetter5(text)
+                inputId6.current.focus() 
+            }
+            if (letterID === 6) {
+                setLetter6(text)
+                inputId7.current.focus() 
+            }
+            if (letterID === 7) {
+                setLetter7(text)
+                inputId8.current.focus() 
+            }
+            if (letterID === 8) { 
+                setLetter8(text)
+                inputId8.current.focus() 
+            }
+        }
+    }
+
+    function check() {
+        let yourNewAnswer = yourAnswer.join("")
+        let theRightAnswer = puzzles[route.params.index].answer.join("")
+        if (yourNewAnswer === theRightAnswer) {
+            console.log("Well, you're right... now what?")
+            conGratULaTions();
+        }
+        if (yourNewAnswer !== theRightAnswer) {
+            console.log("Your answer was " + yourNewAnswer + ". The correct answer was " + theRightAnswer + ". Almost!")
+        }
+    }
+
+    React.useEffect(() => {
+        check();
+    });
+
+    function conGratULaTions() {
+        console.log("Congrats! You guessed correctly.")
+    }
+
     return (
-        <SafeAreaView>
+        <ScrollView>
             <View style={styles.header}>
                 <Pressable
                     style={styles.back}
@@ -523,17 +608,9 @@ function Level({ route }) {
                 <Text style={styles.levelId}>Level {value}</Text>
             </View>
             {levelTheme()}
-            {answerBox()}
-            <View style={styles.divider}></View>
             {allTheClues()}
-            <View style={styles.hints}>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
-            </View>
             <View style={styles.divider}></View>
-        </SafeAreaView>
+        </ScrollView>
     );
 }
 
@@ -542,6 +619,7 @@ export default Level;
 const styles = StyleSheet.create({
     header: {
         height: 70,
+        marginTop: 45,
     },
     button: {
         height: 50,
@@ -556,35 +634,41 @@ const styles = StyleSheet.create({
         fontSize: 30,
     },
     themeBox: {
-        height: 50,
-        marginHorizontal: 25,
-        backgroundColor: '#B0CCF5',
+        height: 105,
+        marginHorizontal: 7.5,
+        backgroundColor: '#70ACE5',
         display: 'flex',
         justifyContent: 'center',
-        borderRadius: 10
+        borderRadius: 5
     },
     themeText: {
         fontSize: 30,
-        marginHorizontal: 15,
-        borderRadius: 5
+        alignSelf: 'center'
     },
     answerRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 25,
-        marginTop: 15,
+        marginHorizontal: 7.5,
+        marginTop: 10,
         justifyContent: 'space-between'
+    },
+    clues: {
+        backgroundColor: '#30C47C',
+        marginHorizontal: 7.5,
+        paddingVertical: 5,
+        borderRadius: 5,
+        marginTop: 10,
     },
     clueRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 25,
-        marginTop: 15,
+        marginHorizontal: 7.5,
+        marginVertical: 5,
         justifyContent: 'space-between'
     },
     inputBox: {
-        width: 40,
-        height: 40,
+        width: 42,
+        height: 42,
         backgroundColor: '#e0e0e0',
         display: 'flex',
         alignItems: 'center',
@@ -592,41 +676,70 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     numberBox: {
-        width: 40,
-        height: 40,
+        width: 42,
+        height: 42,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
         borderRadius: 4,
     },
     emptyBox: {
-        width: 40,
-        height: 40,
+        width: 42,
+        height: 42,
     },
     letterInput: {
-        fontSize: 24,
+        fontSize: 20,
     },
     numberInputRight: {
         fontSize: 14,
-        marginRight: 25,
+        marginRight: 30,
     },
     numberInputLeft: {
         fontSize: 14,
-        marginLeft: 25,
+        marginLeft: 30,
     },
     hints: {
-        marginHorizontal: 25,
-        marginTop: 15,
+        marginHorizontal: 10,
+        marginVertical: 5,
     },
     hint: {
         padding: 3,
-        fontSize: 15,
+        fontSize: 15
     },
     divider: {
-        width: '90%',
-        marginTop: 15,
+        width: '96%',
+        marginTop: 10,
         alignSelf: 'center',
         borderBottomWidth: 1,
         borderBottomColor: 'grey'
+    },
+    buttonBox: {
+        display: 'flex',
+        flexDirection: 'row',
+        justifyContent: 'space-around',
+        marginTop: 7.5,
+        marginHorizontal: 5
+    },
+    formButtonClear: {
+        width: 180,
+        backgroundColor: 'red',
+        paddingVertical: 20,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+    },
+    formButtonSubmit: {
+        width: 180,
+        backgroundColor: 'green',
+        paddingVertical: 20,
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        borderRadius: 5,
+    },
+    buttonText: {
+        color: 'white',
+        fontSize: 20,
     }
 })
