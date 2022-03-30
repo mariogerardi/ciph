@@ -21,6 +21,9 @@ function Level({ route }) {
             clue3: ["!", "!", "K", "?", "?", "?", "?", "?"],
             clue4: ["?", "?", "?", "?", "!", "!", "W", "K"],
             clueHints: ["1. A domesticated female bird", "2. Can reach speeds of up to 36 miles per hour", "3. One of the largest species in the deer family", "4. A bird of prey"],
+            theme: "Animals",
+            encouragement: "You got this!",
+            funFact: "Elephants are the largest land animals on Earth!",
         },
         {
             puzzleId: 2,
@@ -30,7 +33,7 @@ function Level({ route }) {
             clue2: ["?", "?", "!", "!", "O", "!", "?", "?"],
             clue3: ["?", "?", "!", "!", "T", "V", "!", "!"],
             clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
-            clueHints: ["1. A European archipelago", "2. This country borders Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
+            clueHints: ["1. A European archipelago", "2. This country shares a border with Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
         },
         {
             puzzleId: 3,
@@ -183,7 +186,7 @@ function Level({ route }) {
             <View style={styles.answerRow}>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -195,7 +198,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -207,7 +210,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -219,7 +222,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -231,7 +234,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -243,7 +246,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -255,7 +258,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -267,7 +270,7 @@ function Level({ route }) {
                 </View>
                 <View style={styles.inputBox}>
                     <TextInput
-                        editable = {true}
+                        editable = {isEditable()}
                         autoCapitalize = {"characters"}
                         style={styles.letterInput}
                         maxLength={1}
@@ -549,6 +552,8 @@ function Level({ route }) {
     const [letter7, setLetter7] = React.useState(null);
     const [letter8, setLetter8] = React.useState(null);
 
+    const [editable, setEditable] = React.useState(true)
+
     let yourAnswer = [letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8]
 
     function keepTrack(letterID, text) { 
@@ -591,22 +596,50 @@ function Level({ route }) {
     function check() {
         let yourNewAnswer = yourAnswer.join("")
         let theRightAnswer = puzzles[route.params.index].answer.join("")
-        if (yourNewAnswer.toUpperCase() === theRightAnswer) {
-            console.log("Well, you're right... now what?")
-            conGratULaTions();
+        if (!letter1 || !letter2 || !letter3 || !letter4 || !letter5 || !letter6 || !letter7 || !letter8) {
+            return (
+                <View style={styles.status}>
+                    <Text style={styles.statusTitle}>Don't be nervous!</Text>
+                    <Text style={styles.statusText}>Enter your answer above.</Text>
+                    <Text style={styles.statusText}>Give it a shot!</Text>
+                </View>
+            )
         }
-        if (yourNewAnswer.toUpperCase() !== theRightAnswer) {
-            console.log("Your answer was " + yourNewAnswer + ". The correct answer was " + theRightAnswer + ". Almost!")
+        if (letter1 && letter2 && letter3 && letter4 && letter5 && letter6 && letter7 && letter8 && yourNewAnswer.toUpperCase() !== theRightAnswer) {
+            return (
+                <View style={styles.status}>
+                    <Text style={styles.statusTitle}>Not quite...</Text>
+                    <Text style={styles.statusText}>{yourNewAnswer} is not the correct answer.</Text>
+                    <Text style={styles.statusText}>Keep trying!</Text>
+                </View>
+            )
+        }
+        if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
+            return (
+                <View style={styles.status}>
+                    <Text style={styles.statusTitle}>Congratulations!</Text>
+                    <Text style={styles.statusText}>{yourNewAnswer} is the correct answer!</Text>
+                    <Text style={styles.statusFunFact}>Fun fact: {puzzles[route.params.index].funFact}</Text>
+                </View>
+            )
+        }
+    }
+
+    function isEditable() {
+        let yourNewAnswer = yourAnswer.join("")
+        let theRightAnswer = puzzles[route.params.index].answer.join("")
+        if (yourNewAnswer.toUpperCase() !== theRightAnswer) { 
+            return true;
+        }
+        if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
+            return false
         }
     }
 
     React.useEffect(() => {
         check();
+        isEditable();
     });
-
-    function conGratULaTions() {
-        console.log("Congrats! You guessed correctly.")
-    }
 
     return (
         <ScrollView>
@@ -633,9 +666,7 @@ function Level({ route }) {
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
             </View>
             <View style={styles.divider}></View>
-            <View style={styles.status}>
-
-            </View>
+            {check()}
         </ScrollView>
     );
 }
@@ -679,6 +710,14 @@ const styles = StyleSheet.create({
         marginTop: 5,
         marginBottom: 10,
     },
+    statusTitle: {
+        fontSize: 36,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "600",
+        color: 'white',
+        alignSelf: 'center',
+        marginTop: 20,
+    },
     answerRow: {
         display: 'flex',
         flexDirection: 'row',
@@ -720,20 +759,22 @@ const styles = StyleSheet.create({
         height: 42,
     },
     letterInput: {
+        width: 42,
         fontSize: 24,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "400",
+        textAlign: 'center'
     },
     numberInputRight: {
         fontSize: 18,
-        marginRight: 30,
+        marginRight: 25,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         color: 'white'
     },
     numberInputLeft: {
         fontSize: 18,
-        marginLeft: 30,
+        marginLeft: 25,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         color: 'white'
@@ -750,6 +791,24 @@ const styles = StyleSheet.create({
         fontSize: 16,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
+    },
+    statusText: {
+        color: 'white',
+        marginVertical: 2.5,
+        marginHorizontal: 22.5,
+        fontSize: 16.5,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "500",
+        alignSelf: 'center'
+    },
+    statusFunFact: {
+        color: 'white',
+        marginVertical: 20,
+        marginHorizontal: 25,
+        fontSize: 15,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "500",
+        alignSelf: 'center'
     },
     status: {
         backgroundColor: '#403C95',
