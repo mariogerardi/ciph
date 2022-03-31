@@ -73,6 +73,10 @@ const styles = StyleSheet.create({
     background: {
         backgroundColor: '#f9f9f9'
     },
+    back: {
+        width: 60,
+        height: 60,
+    },
     grid: {
         display: 'flex',
         justifyContent: 'center',
@@ -146,7 +150,6 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 2.5,
         left: 25,
-        transform: [{scaleX: -1}]
     },
     bottom: {
         height: 50,

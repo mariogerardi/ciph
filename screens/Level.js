@@ -67,7 +67,33 @@ function Level({ route }) {
             clueHints: ["1. A four-stringed instrument", "2. A five-stringed instrument", "3. A subset of steelpan instruments", "4. A double-reed woodwind instrument"],
             statusTitle: "Compose an Answer...",
             encouragement: "...or just play it by ear.",
-            funFact: "A werewolf's transformation is often associated with the appearance of the full moon.",
+            funFact: "While a violin has four strings and a banjo has five, a mandolin has eight!",
+        },
+        {
+            puzzleId: 5,
+            theme: "Metals",
+            answer: ["A", "L", "U", "M", "I", "N", "U", "M"],
+            clue1: ["?", "?", "?", "Z", "!", "!", "C", "?"],
+            clue2: ["?", "?", "?", "T", "!", "!", "?", "?"],
+            clue3: ["?", "!", "I", "T", "H", "I", "!", "!"],
+            clue4: ["!", "!", "L", "O", "Y", "?", "?", "?"],
+            clueHints: ["1. This metal is good for your immune system", "2. Pewter is almost entirely composed of this", "3. This metal has an atomic number of 3", "4. A composition of two or more metals"],
+            statusTitle: "Compose an Answer...",
+            encouragement: "...or just play it by ear.",
+            funFact: "While a violin has four strings and a banjo has five, a mandolin has eight!",
+        },
+        {
+            puzzleId: 6,
+            theme: "Occupations",
+            answer: ["M", "E", "C", "H", "A", "N", "I", "C"],
+            clue1: ["?", "?", "!", "L", "E", "R", "!", "!"],
+            clue2: ["?", "?", "!", "!", "E", "F", "?", "?"],
+            clue3: ["!", "!", "D", "I", "C", "?", "?", "?"],
+            clue4: ["?", "?", "!", "R", "I", "T", "!", "!"],
+            clueHints: ["1. A religious leader or priest", "2. Trained in food preparation", "3. Administers first-aid at combat sites", "4. Someone who judges artwork professionally"],
+            statusTitle: "Think of something...",
+            encouragement: "...or you're fired!",
+            funFact: "Queen Elizabeth II trained to be a mechanic and truck driver during WWII.",
         },
     ];
 
@@ -755,16 +781,13 @@ function Level({ route }) {
                 <Text style={styles.levelId}>Level {value}</Text>
             </View>
             {levelTheme()}
-            <View style={styles.divider}></View>
             {allTheClues()}
-            <View style={styles.divider}></View>
             <View style={hintsDifficulty()}>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
             </View>
-            <View style={styles.divider}></View>
             {check()}
         </ScrollView>
     );
@@ -775,7 +798,11 @@ export default Level;
 const styles = StyleSheet.create({
     header: {
         height: 70,
-        marginTop: 45,
+        marginTop: 40,
+    },
+    back: {
+        width: 60,
+        height: 60,
     },
     button: {
         height: 55,
@@ -783,10 +810,9 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: 4,
         left: 25,
-        transform: [{scaleX: -1}]
     },
     levelId: {
-        marginTop: 3,
+        marginTop: -56,
         alignSelf: 'center',
         fontSize: 40,
         fontFamily: 'KohinoorTelugu-Light',
@@ -794,12 +820,11 @@ const styles = StyleSheet.create({
     },
     themeBoxEasy: {
         height: 125,
-        marginHorizontal: 7.5,
         backgroundColor: easy_header,
         display: 'flex',
         justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
+        borderTopLeftRadius: 25,
+        borderTopRightRadius: 25,
     },
     themeBoxMedium: {
         height: 125,
@@ -807,8 +832,8 @@ const styles = StyleSheet.create({
         backgroundColor: medium_header,
         display: 'flex',
         justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
     },
     themeBoxHard: {
         height: 125,
@@ -816,8 +841,8 @@ const styles = StyleSheet.create({
         backgroundColor: hard_header,
         display: 'flex',
         justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
     },
     themeBoxVeryHard: {
         height: 125,
@@ -825,8 +850,8 @@ const styles = StyleSheet.create({
         backgroundColor: very_hard_header,
         display: 'flex',
         justifyContent: 'center',
-        borderTopLeftRadius: 20,
-        borderTopRightRadius: 20
+        borderTopLeftRadius: 10,
+        borderTopRightRadius: 10
     },
     themeText: {
         fontSize: 36,
@@ -843,45 +868,40 @@ const styles = StyleSheet.create({
         fontWeight: "600",
         color: 'white',
         alignSelf: 'center',
-        marginTop: 10,
+        marginTop: 20,
     },
     answerRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 7.5,
-        marginTop: 0,
+        marginHorizontal: 15,
         justifyContent: 'space-between'
     },
     cluesEasy: {
         backgroundColor: easy,
-        marginHorizontal: 7.5,
-        paddingVertical: 5,
+        paddingTop: 35,
     },
     cluesMedium: {
         backgroundColor: medium,
-        marginHorizontal: 7.5,
-        paddingVertical: 5,
+        paddingTop: 35,
     },
     cluesHard: {
         backgroundColor: hard,
-        marginHorizontal: 7.5,
-        paddingVertical: 5,
+        paddingTop: 35,
     },
     cluesVeryHard: {
         backgroundColor: very_hard,
-        marginHorizontal: 7.5,
-        paddingVertical: 5,
+        paddingTop: 35,
     },
     clueRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 7.5,
+        marginHorizontal: 15,
         marginVertical: 5,
         justifyContent: 'space-between'
     },
     inputBox: {
-        width: 42,
-        height: 42,
+        width: 41,
+        height: 41,
         backgroundColor: '#f9f9f9',
         display: 'flex',
         alignItems: 'center',
@@ -889,16 +909,16 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     numberBox: {
-        width: 42,
-        height: 42,
+        width: 41,
+        height: 41,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
         borderRadius: 4,
     },
     emptyBox: {
-        width: 42,
-        height: 42,
+        width: 41,
+        height: 41,
     },
     letterInput: {
         width: 42,
@@ -931,28 +951,27 @@ const styles = StyleSheet.create({
     },
     hintsEasy: {
         backgroundColor: easy,
-        marginHorizontal: 7.5,
         paddingVertical: 7.5,
+        paddingHorizontal: 15,
     },
     hintsMedium: {
         backgroundColor: medium,
-        marginHorizontal: 7.5,
         paddingVertical: 7.5,
+        paddingHorizontal: 15,
     },
     hintsHard: {
         backgroundColor: hard,
-        marginHorizontal: 7.5,
         paddingVertical: 7.5,
+        paddingHorizontal: 15,
     },
     hintsVeryHard: {
         backgroundColor: very_hard,
-        marginHorizontal: 7.5,
         paddingVertical: 7.5,
+        paddingHorizontal: 15,
     },
     hint: {
         color: 'white',
         marginVertical: 2.5,
-        paddingHorizontal: 10,
         fontSize: 15,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
@@ -970,43 +989,40 @@ const styles = StyleSheet.create({
         color: 'white',
         marginTop: 5,
         marginHorizontal: 12,
-        fontSize: 16,
+        fontSize: 14,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         alignSelf: 'center'
     },
     statusEasy: {
         backgroundColor: easy,
-        marginHorizontal: 7.5,
-        height: 200,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        height: 300,
     },
     statusMedium: {
         backgroundColor: medium,
         marginHorizontal: 7.5,
         height: 200,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
     },
     statusHard: {
         backgroundColor: hard,
         marginHorizontal: 7.5,
         height: 200,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
     },
     statusVeryHard: {
         backgroundColor: very_hard,
         marginHorizontal: 7.5,
         height: 200,
-        borderBottomLeftRadius: 20,
-        borderBottomRightRadius: 20,
+        borderBottomLeftRadius: 25,
+        borderBottomRightRadius: 25,
     },
     divider: {
-        width: '96%',
         alignSelf: 'center',
-        borderBottomWidth: 1,
+        marginVertical: 2,
+        borderBottomWidth: .5,
         borderBottomColor: 'white'
     }
 })
