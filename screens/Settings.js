@@ -25,7 +25,10 @@ function Settings() {
       "Data Cleared",
       "Your data has been erased.",
       [
-        { text: "OK" },
+        { 
+        text: "OK" ,
+        onPress: () => navigation.navigate("Home")
+        }
       ]
     );
 
@@ -43,7 +46,7 @@ function Settings() {
             <View style={styles.header}>
                 <TouchableOpacity 
                     style={styles.back}
-                    onPress={() => navigation.pop()}
+                    onPress={() => navigation.navigate("Home")}
                     >
                     <Image 
                         style={styles.button} 
@@ -81,8 +84,6 @@ const styles = StyleSheet.create({
     button: {
         height: 60,
         width: 60,
-        position: 'absolute',
-        right: 100,
     },
     button1: {
         width: 250,
@@ -100,5 +101,11 @@ const styles = StyleSheet.create({
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "400",
         color: 'white'
+    },
+    back: {
+        width: 60,
+        height: 60,
+        position: 'absolute',
+        right: 100,
     }
 })
