@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, Pressable, SafeAreaView, Text } from 'react-native';
+import { StyleSheet, TouchableOpacity, SafeAreaView, Text } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 
 function HomeScreen() {
@@ -9,30 +9,30 @@ function HomeScreen() {
     return (
         <SafeAreaView style={styles.home}>
             <Text style={styles.logo}>Word Game</Text>
-            <Pressable
+            <TouchableOpacity
                 title="Levels"
                 style={styles.button1}
                 onPress={() => navigation.navigate('Select')}>
                 <Text style={styles.buttonText}>Levels</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
                 title="Levels"
                 style={styles.button2}
                 onPress={() => navigation.navigate('Select')}>
                 <Text style={styles.buttonText}>How to Play</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
                 title="Levels"
                 style={styles.button3}
                 onPress={() => navigation.navigate('Select')}>
                 <Text style={styles.buttonText}>About</Text>
-            </Pressable>
-            <Pressable
+            </TouchableOpacity>
+            <TouchableOpacity
                 title="Levels"
                 style={styles.button4}
                 onPress={() => navigation.navigate('Select')}>
                 <Text style={styles.buttonText}>Settings</Text>
-            </Pressable>
+            </TouchableOpacity>
         </SafeAreaView>
     );
 }

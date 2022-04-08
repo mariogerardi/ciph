@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import puzzles from '../components/puzzles';
+
+console.log(puzzles[0])
 
 const easy = '#30A47C'
 const medium = '#50ACE5'
@@ -78,9 +82,9 @@ function Level({ route }) {
             clue3: ["?", "!", "I", "T", "H", "I", "!", "!"],
             clue4: ["!", "!", "L", "O", "Y", "?", "?", "?"],
             clueHints: ["1. This metal is good for your immune system", "2. Pewter is almost entirely composed of this", "3. This metal has an atomic number of 3", "4. A composition of two or more metals"],
-            statusTitle: "Compose an Answer...",
+            statusTitle: "F",
             encouragement: "...or just play it by ear.",
-            funFact: "While a violin has four strings and a banjo has five, a mandolin has eight!",
+            funFact: "Aluminum is the third most abundant element in the earth's crust, after oxygen and silicon.",
         },
         {
             puzzleId: 6,
@@ -739,7 +743,10 @@ function Level({ route }) {
                 </View>
             )
         }
-        if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
+        if (yourNewAnswer.toUpperCase() === theRightAnswer) {
+            setLevelComplete(value);
+            getLevelStatus(value);
+            logCurrentStorage();
             return (
                 <View style={statusDifficulty()}>
                     <Text style={styles.statusTitle}>Congratulations!</Text>
@@ -759,6 +766,45 @@ function Level({ route }) {
         if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
             return false
         }
+    }
+
+
+    const clearAll = async () => {
+        try {
+          await AsyncStorage.clear()
+        } catch(e) {
+        console.log(e)
+        }  
+        console.log('Deleted.')
+    } 
+
+    const setLevelComplete = async (value) => {
+        try {
+            const item = JSON.stringify(value);
+            await AsyncStorage.setItem(`${item}`, "1")
+        } catch(e) {
+        }
+    }
+
+    const getLevelStatus = async (value) => {
+        try {
+            const item = JSON.stringify(value);
+            return await AsyncStorage.getItem(`${item}`)
+        }  
+        catch(e) {
+        }
+    }
+
+    function logCurrentStorage() {
+        AsyncStorage.getAllKeys().then((keyArray) => {
+          AsyncStorage.multiGet(keyArray).then((keyValArray) => {
+            let myStorage = {};
+            for (let keyVal of keyValArray) {
+              myStorage[keyVal[0]] = keyVal[1]
+            }
+            console.log('CURRENT STORAGE: ', myStorage);
+          })
+        });
     }
 
     React.useEffect(() => {
