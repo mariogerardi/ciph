@@ -4,6 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import HomeScreen from './screens/Home';
 import SelectScreen from './screens/Select';
 import Level from './screens/Level';
+import Settings from './screens/Settings'
 
 const Stack = createNativeStackNavigator();
 
@@ -19,6 +20,8 @@ function App() {
                     name="Select" component={SelectScreen} />
                 <Stack.Screen 
                     name="Level" component={Level} />
+                <Stack.Screen 
+                    name="Settings" component={Settings} />
             </Stack.Navigator>
         </NavigationContainer>
     );

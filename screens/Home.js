@@ -30,7 +30,7 @@ function HomeScreen() {
             <TouchableOpacity
                 title="Levels"
                 style={styles.button4}
-                onPress={() => navigation.navigate('Select')}>
+                onPress={() => navigation.navigate('Settings')}>
                 <Text style={styles.buttonText}>Settings</Text>
             </TouchableOpacity>
         </SafeAreaView>
@@ -57,7 +57,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{rotate: '3deg'}]
+        transform: [{rotate: '2deg'}]
     },
     button2: {
         width: 250,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{rotate: '-3deg'}],
+        transform: [{rotate: '-2deg'}],
         marginVertical: 50
     },
     button3: {
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{rotate: '3deg'}]
+        transform: [{rotate: '2deg'}]
     },
     button4: {
         width: 250,
@@ -88,7 +88,7 @@ const styles = StyleSheet.create({
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{rotate: '-3deg'}],
+        transform: [{rotate: '-2deg'}],
         marginVertical: 50
     },
     buttonText: {
