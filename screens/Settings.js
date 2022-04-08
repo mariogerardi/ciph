@@ -43,7 +43,7 @@ function Settings() {
 
     return (
         <SafeAreaView style={styles.home}>
-            <View style={styles.header}>
+            <View>
                 <TouchableOpacity 
                     style={styles.back}
                     onPress={() => navigation.navigate("Home")}
@@ -76,10 +76,6 @@ const styles = StyleSheet.create({
         marginVertical: 75,
         fontSize: 60,
         fontFamily: 'KohinoorTelugu-Light'
-    },
-    header: {
-        marginTop: 0,
-        height: 70,
     },
     button: {
         height: 60,

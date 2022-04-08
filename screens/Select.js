@@ -84,6 +84,8 @@ function SelectScreen() {
                     />
                 </TouchableOpacity>
             </View>
+            <Text style={styles.progressHeader}>Levels Completed:</Text>
+            <Text style={styles.progress}>{getValue.length}/80</Text>
         {level()}
         <View style={styles.bottom}></View>
         </ScrollView>
@@ -174,6 +176,18 @@ const styles = StyleSheet.create({
     id: {
         color: '#e9e9e9',
         fontSize: 38,
+        fontFamily: 'KohinoorTelugu-Light'
+    },
+    progressHeader: {
+        textAlign: 'center',
+        fontSize: 40,
+        fontFamily: 'KohinoorTelugu-Light',
+        marginBottom: -15,
+        marginTop: -10,
+    },
+    progress: {
+        textAlign: 'center',
+        fontSize: 55,
         fontFamily: 'KohinoorTelugu-Light'
     },
     header: {

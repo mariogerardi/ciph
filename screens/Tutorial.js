@@ -1,102 +1,27 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import puzzles from '../components/puzzles';
 
 const easy = '#30A47C'
-const medium = '#50ACE5'
-const hard = '#D4903C'
-const very_hard = '#403C95'
-
 const easy_header = '#30A47C'
-const medium_header = '#70ACE5'
-const hard_header = '#D4903C'
-const very_hard_header = '#403C95'
 
-function Level({ route }) {
+function Tutorial({route}) {
 
     const navigation = useNavigation();
 
     const puzzles = [
         {
             puzzleId: 1,
-            theme: "Animals",
-            answer: ["E", "L", "E", "P", "H", "A", "N", "T"],
-            clue1: ["?", "?", "?", "?", "!", "E", "!", "?"],
-            clue2: ["?", "!", "!", "O", "P", "!", "R", "D"],
-            clue3: ["!", "!", "K", "?", "?", "?", "?", "?"],
-            clue4: ["?", "?", "?", "?", "!", "!", "W", "K"],
-            clueHints: ["1. A domesticated female bird", "2. Can reach speeds of up to 36 miles per hour", "3. One of the largest species in the deer family", "4. A bird of prey"],
-            statusTitle: "Take a guess!",
-            encouragement: "You got this!",
-            funFact: "Elephants are the largest land animals on Earth!",
-        },
-        {
-            puzzleId: 2,
-            theme: "Countries",
-            answer: ["M", "A", "L", "A", "Y", "S", "I", "A"],
-            clue1: ["!", "!", "!", "T", "A", "?", "?", "?"],
-            clue2: ["?", "?", "!", "!", "O", "!", "?", "?"],
-            clue3: ["?", "?", "!", "!", "T", "V", "!", "!"],
-            clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
-            clueHints: ["1. A European archipelago", "2. This country shares a border with Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
-            statusTitle: "What's your guess?",
-            encouragement: "and no looking at any maps!",
-            funFact: "70% of the population of Malaysia is urban.",
-        },
-        {
-            puzzleId: 3,
-            theme: "Mythical Creatures",
-            answer: ["W", "E", "R", "E", "W", "O", "L", "F"],
-            clue1: ["?", "?", "?", "?", "?", "E", "!", "!"],
-            clue2: ["O", "G", "!", "!", "?", "?", "?", "?"],
-            clue3: ["?", "?", "?", "T", "R", "!", "!", "L"],
-            clue4: ["N", "!", "!", "!", "I", "D", "?", "?"],
-            clueHints: ["1. A pointy-eared humanoid being", "2. A large humanoid being with great strength", "3. A magical creature that lives in the hills", "4. A sea nymph of the Mediterranean"],
-            statusTitle: "and your answer is...",
-            encouragement: "...don't worry, I'm patient.",
-            funFact: "A werewolf's transformation is often associated with the appearance of a full moon.",
-        },
-        {
-            puzzleId: 4,
-            theme: "Musical Instruments",
-            answer: ["M", "A", "N", "D", "O", "L", "I", "N"],
-            clue1: ["?", "?", "V", "I", "!", "!", "!", "!"],
-            clue2: ["B", "!", "!", "J", "!", "?", "?", "?"],
-            clue3: ["H", "!", "!", "!", "P", "A", "N", "?"],
-            clue4: ["?", "?", "O", "B", "!", "E", "?", "?"],
-            clueHints: ["1. A four-stringed instrument", "2. A five-stringed instrument", "3. A subset of steelpan instruments", "4. A double-reed woodwind instrument"],
-            statusTitle: "Compose an Answer...",
-            encouragement: "...or just play it by ear.",
-            funFact: "While a violin has four strings and a banjo has five, a mandolin has eight!",
-        },
-        {
-            puzzleId: 5,
-            theme: "Metals",
-            answer: ["A", "L", "U", "M", "I", "N", "U", "M"],
-            clue1: ["?", "?", "?", "Z", "!", "!", "C", "?"],
-            clue2: ["?", "?", "?", "T", "!", "!", "?", "?"],
-            clue3: ["?", "!", "I", "T", "H", "I", "!", "!"],
-            clue4: ["!", "!", "L", "O", "Y", "?", "?", "?"],
-            clueHints: ["1. This metal is good for your immune system", "2. Pewter is almost entirely composed of this", "3. This metal has an atomic number of 3", "4. A composition of two or more metals"],
-            statusTitle: "F",
-            encouragement: "...or just play it by ear.",
-            funFact: "Aluminum is the third most abundant element in the earth's crust, after oxygen and silicon.",
-        },
-        {
-            puzzleId: 6,
-            theme: "Occupations",
-            answer: ["M", "E", "C", "H", "A", "N", "I", "C"],
-            clue1: ["?", "?", "!", "L", "E", "R", "!", "!"],
-            clue2: ["?", "?", "!", "!", "E", "F", "?", "?"],
-            clue3: ["!", "!", "D", "I", "C", "?", "?", "?"],
-            clue4: ["?", "?", "!", "R", "I", "T", "!", "!"],
-            clueHints: ["1. A religious leader or priest", "2. Trained in food preparation", "3. Administers first-aid at combat sites", "4. Someone who judges artwork professionally"],
-            statusTitle: "Think of something...",
-            encouragement: "...or you're fired!",
-            funFact: "Queen Elizabeth II trained to be a mechanic and truck driver during WWII.",
-        },
+            theme: "How To Play:",
+            answer: ["T", "U", "T", "O", "R", "I", "A", "L"],
+            clue1: ["!", "O", "!", "A", "L", "L", "Y", "?"],
+            clue2: ["F", "!", "N", "?", "?", "?", "?", "?"],
+            clue3: ["?", "?", "F", "!", "!", "?", "?", "?"],
+            clue4: ["?", "?", "?", "?", "?", "A", "L", "!"],
+            clueHints: ["1. Completely; Entirely; Absolutely; Fully", "2. This game is so much ___", "3. Rhymes with 'more'", "4. Everyone or everything"],
+            encouragement: "...Does it make sense yet?",
+            funFact: "You're ready to play!",
+        }
     ];
 
     let value = route.params.index + 1;
@@ -120,62 +45,26 @@ function Level({ route }) {
     }
 
     function themeDifficulty() {
-        if (value < 21) {
+        if (value === 1) {
             return styles.themeBoxEasy;
-        }
-        if (value < 41) {
-            return styles.themeBoxMedium;
-        }
-        if (value < 61) {
-            return styles.themeBoxHard;
-        }
-        if (value < 81) {
-            return styles.themeBoxVeryHard;
         }
     }
 
     function cluesDifficulty() {
-        if (value < 21) {
+        if (value === 1) {
             return styles.cluesEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.cluesMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.cluesHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.cluesVeryHard;
         }
     }
 
     function hintsDifficulty() {
-        if (value < 21) {
+        if (value === 1) {
             return styles.hintsEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.hintsMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.hintsHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.hintsVeryHard;
         }
     }
 
     function statusDifficulty() {
-        if (value < 21) {
+        if (value === 1) {
             return styles.statusEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.statusMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.statusHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.statusVeryHard;
         }
     }
 
@@ -636,6 +525,9 @@ function Level({ route }) {
                     {clue1(6)}
                     {clue1(7)}
                 </View>
+                <View style={hintsDifficulty()}>
+                    <Text style={styles.tutorial}>The first and third letters in the clue above correspond to the first and third letters of the puzzle's answer. Use the hints below to figure out the missing letters.</Text>
+                </View>                          
                 <View style={styles.clueRow}>
                     {numberify2(2)}
                     {clue2(0)}
@@ -669,6 +561,9 @@ function Level({ route }) {
                     {clue4(6)}
                     {clue4(7)}
                 </View>
+                <View style={hintsDifficulty()}>
+                    <Text style={styles.tutorial}>Each hint below corresponds to a clue. Don't be afraid to brainstorm your guesses by typing letters in the empty boxes!</Text>
+                </View>    
             </View>
         )
     }
@@ -727,7 +622,6 @@ function Level({ route }) {
         if (!letter1 || !letter2 || !letter3 || !letter4 || !letter5 || !letter6 || !letter7 || !letter8) {
             return (
                 <View style={statusDifficulty()}>
-                    <Text style={styles.statusTitle}>{puzzles[route.params.index].statusTitle}</Text>
                     <Text style={styles.statusText}>{puzzles[route.params.index].encouragement}</Text>
                 </View>
             )
@@ -735,21 +629,15 @@ function Level({ route }) {
         if (letter1 && letter2 && letter3 && letter4 && letter5 && letter6 && letter7 && letter8 && yourNewAnswer.toUpperCase() !== theRightAnswer) {
             return (
                 <View style={statusDifficulty()}>
-                    <Text style={styles.statusTitle}>Not quite...</Text>
-                    <Text style={styles.statusText}>{yourNewAnswer} is not the correct answer.</Text>
-                    <Text style={styles.statusText}>Keep trying!</Text>
+                    <Text style={styles.statusText}>Not quite. Keep trying!</Text>
                 </View>
             )
         }
         if (yourNewAnswer.toUpperCase() === theRightAnswer) {
-            setLevelComplete(value);
-            getLevelStatus(value);
-            logCurrentStorage();
             return (
                 <View style={statusDifficulty()}>
-                    <Text style={styles.statusTitle}>Congratulations!</Text>
                     <Text style={styles.statusText}>{yourNewAnswer} is the correct answer!</Text>
-                    <Text style={styles.statusFunFact}>Fun fact: {puzzles[route.params.index].funFact}</Text>
+                    <Text style={styles.statusFunFact}>{puzzles[route.params.index].funFact}</Text>
                 </View>
             )
         }
@@ -764,45 +652,6 @@ function Level({ route }) {
         if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
             return false
         }
-    }
-
-
-    const clearAll = async () => {
-        try {
-          await AsyncStorage.clear()
-        } catch(e) {
-        console.log(e)
-        }  
-        console.log('Deleted.')
-    } 
-
-    const setLevelComplete = async (value) => {
-        try {
-            const item = JSON.stringify(value);
-            await AsyncStorage.setItem(`${item}`, "1")
-        } catch(e) {
-        }
-    }
-
-    const getLevelStatus = async (value) => {
-        try {
-            const item = JSON.stringify(value);
-            return await AsyncStorage.getItem(`${item}`)
-        }  
-        catch(e) {
-        }
-    }
-
-    function logCurrentStorage() {
-        AsyncStorage.getAllKeys().then((keyArray) => {
-          AsyncStorage.multiGet(keyArray).then((keyValArray) => {
-            let myStorage = {};
-            for (let keyVal of keyValArray) {
-              myStorage[keyVal[0]] = keyVal[1]
-            }
-            console.log('CURRENT STORAGE: ', myStorage);
-          })
-        });
     }
 
     React.useEffect(() => {
@@ -822,9 +671,11 @@ function Level({ route }) {
                         source={require("../assets/arrow.png")}
                     />
                 </Pressable>
-                <Text style={styles.levelId}>Level {value}</Text>
             </View>
             {levelTheme()}
+            <View style={hintsDifficulty()}>
+                <Text style={styles.tutorial}>Type your answer in the space above. Try to guess the letters by solving the clues below.</Text>
+            </View>            
             {allTheClues()}
             <View style={hintsDifficulty()}>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
@@ -837,7 +688,7 @@ function Level({ route }) {
     );
 }
 
-export default Level;
+export default Tutorial;
 
 const styles = StyleSheet.create({
     header: {
@@ -863,39 +714,12 @@ const styles = StyleSheet.create({
         fontWeight: "600",
     },
     themeBoxEasy: {
-        height: 125,
+        height: 110,
         backgroundColor: easy_header,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 25,
         borderTopRightRadius: 25,
-    },
-    themeBoxMedium: {
-        height: 125,
-        marginHorizontal: 7.5,
-        backgroundColor: medium_header,
-        display: 'flex',
-        justifyContent: 'center',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
-    },
-    themeBoxHard: {
-        height: 125,
-        marginHorizontal: 7.5,
-        backgroundColor: hard_header,
-        display: 'flex',
-        justifyContent: 'center',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
-    },
-    themeBoxVeryHard: {
-        height: 125,
-        marginHorizontal: 7.5,
-        backgroundColor: very_hard_header,
-        display: 'flex',
-        justifyContent: 'center',
-        borderTopLeftRadius: 10,
-        borderTopRightRadius: 10
     },
     themeText: {
         fontSize: 36,
@@ -922,19 +746,7 @@ const styles = StyleSheet.create({
     },
     cluesEasy: {
         backgroundColor: easy,
-        paddingTop: 35,
-    },
-    cluesMedium: {
-        backgroundColor: medium,
-        paddingTop: 35,
-    },
-    cluesHard: {
-        backgroundColor: hard,
-        paddingTop: 35,
-    },
-    cluesVeryHard: {
-        backgroundColor: very_hard,
-        paddingTop: 35,
+        paddingVertical: 5,
     },
     clueRow: {
         display: 'flex',
@@ -995,22 +807,7 @@ const styles = StyleSheet.create({
     },
     hintsEasy: {
         backgroundColor: easy,
-        paddingVertical: 7.5,
-        paddingHorizontal: 15,
-    },
-    hintsMedium: {
-        backgroundColor: medium,
-        paddingVertical: 7.5,
-        paddingHorizontal: 15,
-    },
-    hintsHard: {
-        backgroundColor: hard,
-        paddingVertical: 7.5,
-        paddingHorizontal: 15,
-    },
-    hintsVeryHard: {
-        backgroundColor: very_hard,
-        paddingVertical: 7.5,
+        paddingVertical: 1,
         paddingHorizontal: 15,
     },
     hint: {
@@ -1020,10 +817,18 @@ const styles = StyleSheet.create({
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
     },
-    statusText: {
+    tutorial: {
         color: 'white',
         marginVertical: 2.5,
+        fontSize: 14,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: "400",
+    },
+    statusText: {
+        color: 'white',
         marginHorizontal: 22.5,
+        marginTop: 10,
+        marginBottom: 2.5,
         fontSize: 20,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
@@ -1031,33 +836,15 @@ const styles = StyleSheet.create({
     },
     statusFunFact: {
         color: 'white',
-        marginTop: 5,
+        marginTop: -5,
         marginHorizontal: 12,
-        fontSize: 14,
+        fontSize: 16,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
         alignSelf: 'center'
     },
     statusEasy: {
         backgroundColor: easy,
-        height: 400,
-    },
-    statusMedium: {
-        backgroundColor: medium,
-        height: 400,
-    },
-    statusHard: {
-        backgroundColor: hard,
-        height: 400,
-    },
-    statusVeryHard: {
-        backgroundColor: very_hard,
-        height: 400,
-    },
-    divider: {
-        alignSelf: 'center',
-        marginVertical: 2,
-        borderBottomWidth: .5,
-        borderBottomColor: 'white'
+        height: 350,
     }
 })
