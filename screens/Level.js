@@ -9,11 +9,6 @@ const medium = '#50ACE5'
 const hard = '#D4903C'
 const very_hard = '#403C95'
 
-const easy_header = '#30A47C'
-const medium_header = '#70ACE5'
-const hard_header = '#D4903C'
-const very_hard_header = '#403C95'
-
 function Level({ route }) {
 
     const navigation = useNavigation();
@@ -23,10 +18,12 @@ function Level({ route }) {
             puzzleId: 1,
             theme: "Animals",
             answer: ["E", "L", "E", "P", "H", "A", "N", "T"],
-            clue1: ["?", "?", "?", "?", "!", "E", "!", "?"],
-            clue2: ["?", "!", "!", "O", "P", "!", "R", "D"],
-            clue3: ["!", "!", "K", "?", "?", "?", "?", "?"],
-            clue4: ["?", "?", "?", "?", "!", "!", "W", "K"],
+            clues: [
+                ["?", "?", "?", "?", "!", "E", "!", "?"], 
+                ["?", "!", "!", "O", "P", "!", "R", "D"],
+                ["!", "!", "K", "?", "?", "?", "?", "?"],
+                ["?", "?", "?", "?", "!", "!", "W", "K"]
+            ],
             clueHints: ["1. A domesticated female bird", "2. Can reach speeds of up to 36 miles per hour", "3. One of the largest species in the deer family", "4. A bird of prey"],
             statusTitle: "Take a guess!",
             encouragement: "You got this!",
@@ -36,10 +33,12 @@ function Level({ route }) {
             puzzleId: 2,
             theme: "Countries",
             answer: ["M", "A", "L", "A", "Y", "S", "I", "A"],
-            clue1: ["!", "!", "!", "T", "A", "?", "?", "?"],
-            clue2: ["?", "?", "!", "!", "O", "!", "?", "?"],
-            clue3: ["?", "?", "!", "!", "T", "V", "!", "!"],
-            clue4: ["?", "!", "!", "G", "E", "R", "!", "!"],
+            clues: [
+                ["!", "!", "!", "T", "A", "?", "?", "?"], 
+                ["?", "?", "!", "!", "O", "!", "?", "?"], 
+                ["?", "?", "!", "!", "T", "V", "!", "!"], 
+                ["?", "!", "!", "G", "E", "R", "!", "!"]
+            ],
             clueHints: ["1. A European archipelago", "2. This country shares a border with Thailand", "3. The capital of this country is Riga", "4. The tenth largest country by area"],
             statusTitle: "What's your guess?",
             encouragement: "and no looking at any maps!",
@@ -49,10 +48,12 @@ function Level({ route }) {
             puzzleId: 3,
             theme: "Mythical Creatures",
             answer: ["W", "E", "R", "E", "W", "O", "L", "F"],
-            clue1: ["?", "?", "?", "?", "?", "E", "!", "!"],
-            clue2: ["O", "G", "!", "!", "?", "?", "?", "?"],
-            clue3: ["?", "?", "?", "T", "R", "!", "!", "L"],
-            clue4: ["N", "!", "!", "!", "I", "D", "?", "?"],
+            clues: [
+                ["?", "?", "?", "?", "?", "E", "!", "!"], 
+                ["O", "G", "!", "!", "?", "?", "?", "?"], 
+                ["?", "?", "?", "T", "R", "!", "!", "L"], 
+                ["N", "!", "!", "!", "I", "D", "?", "?"]
+            ],
             clueHints: ["1. A pointy-eared humanoid being", "2. A large humanoid being with great strength", "3. A magical creature that lives in the hills", "4. A sea nymph of the Mediterranean"],
             statusTitle: "and your answer is...",
             encouragement: "...don't worry, I'm patient.",
@@ -62,10 +63,12 @@ function Level({ route }) {
             puzzleId: 4,
             theme: "Musical Instruments",
             answer: ["M", "A", "N", "D", "O", "L", "I", "N"],
-            clue1: ["?", "?", "V", "I", "!", "!", "!", "!"],
-            clue2: ["B", "!", "!", "J", "!", "?", "?", "?"],
-            clue3: ["H", "!", "!", "!", "P", "A", "N", "?"],
-            clue4: ["?", "?", "O", "B", "!", "E", "?", "?"],
+            clues: [
+                ["?", "?", "V", "I", "!", "!", "!", "!"], 
+                ["B", "!", "!", "J", "!", "?", "?", "?"], 
+                ["H", "!", "!", "!", "P", "A", "N", "?"], 
+                ["?", "?", "O", "B", "!", "E", "?", "?"]
+            ],
             clueHints: ["1. A four-stringed instrument", "2. A five-stringed instrument", "3. A subset of steelpan instruments", "4. A double-reed woodwind instrument"],
             statusTitle: "Compose an Answer...",
             encouragement: "...or just play it by ear.",
@@ -75,10 +78,12 @@ function Level({ route }) {
             puzzleId: 5,
             theme: "Metals",
             answer: ["A", "L", "U", "M", "I", "N", "U", "M"],
-            clue1: ["?", "?", "?", "Z", "!", "!", "C", "?"],
-            clue2: ["?", "?", "?", "T", "!", "!", "?", "?"],
-            clue3: ["?", "!", "I", "T", "H", "I", "!", "!"],
-            clue4: ["!", "!", "L", "O", "Y", "?", "?", "?"],
+            clues: [
+                ["?", "?", "?", "Z", "!", "!", "C", "?"], 
+                ["?", "?", "?", "T", "!", "!", "?", "?"], 
+                ["?", "!", "I", "T", "H", "I", "!", "!"], 
+                ["!", "!", "L", "O", "Y", "?", "?", "?"]
+            ],
             clueHints: ["1. This metal is good for your immune system", "2. Pewter is almost entirely composed of this", "3. This metal has an atomic number of 3", "4. A composition of two or more metals"],
             statusTitle: "F",
             encouragement: "...or just play it by ear.",
@@ -88,10 +93,12 @@ function Level({ route }) {
             puzzleId: 6,
             theme: "Occupations",
             answer: ["M", "E", "C", "H", "A", "N", "I", "C"],
-            clue1: ["?", "?", "!", "L", "E", "R", "!", "!"],
-            clue2: ["?", "?", "!", "!", "E", "F", "?", "?"],
-            clue3: ["!", "!", "D", "I", "C", "?", "?", "?"],
-            clue4: ["?", "?", "!", "R", "I", "T", "!", "!"],
+            clues: [
+                ["?", "?", "!", "L", "E", "R", "!", "!"], 
+                ["?", "?", "!", "!", "E", "F", "?", "?"], 
+                ["!", "!", "D", "I", "C", "?", "?", "?"], 
+                ["?", "?", "!", "R", "I", "T", "!", "!"]
+            ],
             clueHints: ["1. A religious leader or priest", "2. Trained in food preparation", "3. Administers first-aid at combat sites", "4. Someone who judges artwork professionally"],
             statusTitle: "Think of something...",
             encouragement: "...or you're fired!",
@@ -101,10 +108,12 @@ function Level({ route }) {
             puzzleId: 7,
             theme: "Art",
             answer: ["A", "B", "S", "T", "R", "A", "C", "T"],
-            clue1: ["P", "A", "!", "!", "E", "L", "?", "?"],
-            clue2: ["?", "?", "?", "?", "C", "!", "S", "!"],
-            clue3: ["?", "F", "A", "B", "!", "I", "!", "?"],
-            clue4: ["?", "!", "A", "U", "H", "!", "U", "S"],
+            clues: [
+                ["P", "A", "!", "!", "E", "L", "?", "?"], 
+                ["?", "?", "?", "?", "C", "!", "S", "!"], 
+                ["?", "F", "A", "B", "!", "I", "!", "?"], 
+                ["?", "!", "A", "U", "H", "!", "U", "S"]
+            ],
             clueHints: ["1. Consists of powdered pigment and a binder", "2. One of four main sculpture techniques", "3. Textile cloth made by weaving, knitting, or felting fibers", "4. A German art school established in 1919"],
             statusTitle: "Get Creative!",
             encouragement: "Or get back to the drawing board...",
@@ -114,10 +123,12 @@ function Level({ route }) {
             puzzleId: 8,
             theme: "Colors",
             answer: ["C", "E", "R", "U", "L", "E", "A", "N"],
-            clue1: ["!", "!", "!", "I", "S", "E", "?", "?"],
-            clue2: ["?", "?", "?", "?", "C", "Y", "!", "!"],
-            clue3: ["?", "!", "!", "I", "N", "?", "?", "?"],
-            clue4: ["?", "M", "A", "!", "V", "!", "?", "?"],
+            clues: [
+                ["!", "!", "!", "I", "S", "E", "?", "?"], 
+                ["?", "?", "?", "?", "C", "Y", "!", "!"], 
+                ["?", "!", "!", "I", "N", "?", "?", "?"], 
+                ["?", "M", "A", "!", "V", "!", "?", "?"]
+            ],
             clueHints: ["1. A deep, reddish pink", "2. The C in CMYK", "3. A shade of green, named for Ireland", "4. A pale shade of purple"],
             statusTitle: "Guess!",
             encouragement: "The answer isn't black OR white.",
@@ -127,10 +138,12 @@ function Level({ route }) {
             puzzleId: 9,
             theme: "U.S. Cities",
             answer: ["S", "Y", "R", "A", "C", "U", "S", "E"],
-            clue1: ["?", "?", "!", "!", "!", "I", "N", "!"],
-            clue2: ["?", "?", "?", "!", "M", "E", "!", "?"],
-            clue3: ["?", "E", "!", "I", "E", "?", "?", "?"],
-            clue4: ["I", "T", "H", "!", "!", "A", "?", "?"],
+            clues: [
+                ["?", "?", "!", "!", "!", "I", "N", "!"], 
+                ["?", "?", "?", "!", "M", "E", "!", "?"], 
+                ["?", "E", "!", "I", "E", "?", "?", "?"], 
+                ["I", "T", "H", "!", "!", "A", "?", "?"]
+            ],
             clueHints: ["1. The fifth most-populous city in Wisconsin", "2. The university in this Iowan city makes up over half its population", "3. On the south shore of a lake with the same name", "4. The home city of Cornell University"],
             statusTitle: "Where are we?",
             encouragement: "And, again, no maps.",
@@ -140,10 +153,12 @@ function Level({ route }) {
             puzzleId: 10,
             theme: "Events",
             answer: ["F", "E", "S", "T", "I", "V", "A", "L"],
-            clue1: ["?", "?", "!", "O", "!", "R", "E", "E"],
-            clue2: ["?", "R", "E", "C", "!", "T", "!", "!"],
-            clue3: ["?", "?", "!", "O", "C", "I", "!", "!"],
-            clue4: ["I", "T", "H", "!", "!", "A", "?", "?"],
+            clues: [
+                ["?", "?", "!", "O", "!", "R", "E", "E"], 
+                ["?", "R", "E", "C", "!", "T", "!", "!"], 
+                ["?", "?", "!", "O", "C", "I", "!", "!"], 
+                ["I", "T", "H", "!", "!", "A", "?", "?"]
+            ],
             clueHints: ["1. The fifth most-populous city in Wisconsin", "2. The university in this Iowan city makes up over half its population", "3. On the south shore of a lake with the same name", "4. The home city of Cornell University"],
             statusTitle: "Where are we?",
             encouragement: "And, again, no maps.",
@@ -164,173 +179,95 @@ function Level({ route }) {
 
     function levelTheme() {
         return (
-            <View style={themeDifficulty()}>
+            <View style={difficulty(1)}>
                 <Text style={styles.themeText}>{puzzles[route.params.index].theme}</Text>
                 {answerBox()}
             </View>
         )
     }
 
-    function themeDifficulty() {
-        if (value < 21) {
-            return styles.themeBoxEasy;
+    function difficulty(section) {
+        if (section === 1) {
+            if (value < 21) {
+                return styles.themeBoxEasy;
+            }
+            if (value < 41) {
+                return styles.themeBoxMedium;
+            }
+            if (value < 61) {
+                return styles.themeBoxHard;
+            }
+            if (value < 81) {
+                return styles.themeBoxVeryHard;
+            }
         }
-        if (value < 41) {
-            return styles.themeBoxMedium;
+        if (section === 2) {
+            if (value < 21) {
+                return styles.cluesEasy;
+            }
+            if (value < 41 && value > 20) {
+                return styles.cluesMedium;
+            }
+            if (value < 61 && value > 40) {
+                return styles.cluesHard;
+            }
+            if (value < 81 && value > 60) {
+                return styles.cluesVeryHard;
+            }
         }
-        if (value < 61) {
-            return styles.themeBoxHard;
+        if (section === 3) {
+            if (value < 21) {
+                return styles.hintsEasy;
+            }
+            if (value < 41 && value > 20) {
+                return styles.hintsMedium;
+            }
+            if (value < 61 && value > 40) {
+                return styles.hintsHard;
+            }
+            if (value < 81 && value > 60) {
+                return styles.hintsVeryHard;
+            }
         }
-        if (value < 81) {
-            return styles.themeBoxVeryHard;
-        }
-    }
-
-    function cluesDifficulty() {
-        if (value < 21) {
-            return styles.cluesEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.cluesMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.cluesHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.cluesVeryHard;
-        }
-    }
-
-    function hintsDifficulty() {
-        if (value < 21) {
-            return styles.hintsEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.hintsMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.hintsHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.hintsVeryHard;
-        }
-    }
-
-    function statusDifficulty() {
-        if (value < 21) {
-            return styles.statusEasy;
-        }
-        if (value < 41 && value > 20) {
-            return styles.statusMedium;
-        }
-        if (value < 61 && value > 40) {
-            return styles.statusHard;
-        }
-        if (value < 81 && value > 60) {
-            return styles.statusVeryHard;
-        }
-    }
-
-    function numberify1(j) {
-        let firstIndex = puzzles[route.params.index].clue1.indexOf("?")
-        let lastIndex = puzzles[route.params.index].clue1.lastIndexOf("?")
-        if (lastIndex === 7 && firstIndex === 3) {
-            puzzles[route.params.index].clue1.splice(3, 1, j)
-        }
-        if (firstIndex === 0 && lastIndex === 4) {
-            puzzles[route.params.index].clue1.splice(4, 1, j)
-        }
-        if (lastIndex < 4 && puzzles[route.params.index].clue1[lastIndex + 1] !== "?") {
-            puzzles[route.params.index].clue1.splice(lastIndex, 1, j)
-        } else if (firstIndex > 3 && puzzles[route.params.index].clue1[firstIndex - 1] !== "?") {
-            puzzles[route.params.index].clue1.splice(firstIndex, 1, j)
-        } else if (lastIndex > 4 && puzzles[route.params.index].clue1[lastIndex - 1] !== "?") {
-            puzzles[route.params.index].clue1.splice(lastIndex, 1, j)
-        } else if (firstIndex < 3 && puzzles[route.params.index].clue1[firstIndex + 1] !== "?") {
-            puzzles[route.params.index].clue1.splice(firstIndex, 1, j)
-        } else if (firstIndex === 0 && lastIndex === 7) {
-            if (puzzles[route.params.index].clue1[lastIndex - 2] !== "?") {
-                puzzles[route.params.index].clue1.splice(lastIndex - 1, 1, j)
-            } else if (puzzles[route.params.index].clue1[firstIndex + 2] !== "?") {
-                puzzles[route.params.index].clue1.splice(firstIndex + 1, 1, j)
+        if (section === 4) {
+            if (value < 21) {
+                return styles.statusEasy;
+            }
+            if (value < 41 && value > 20) {
+                return styles.statusMedium;
+            }
+            if (value < 61 && value > 40) {
+                return styles.statusHard;
+            }
+            if (value < 81 && value > 60) {
+                return styles.statusVeryHard;
             }
         }
     }
 
-    function numberify2(j) {
-        let firstIndex = puzzles[route.params.index].clue2.indexOf("?")
-        let lastIndex = puzzles[route.params.index].clue2.lastIndexOf("?")
+    function numberify(row) {
+        let rowInQuestion = puzzles[route.params.index].clues[row]
+        let firstIndex = rowInQuestion.indexOf("?")
+        let lastIndex = rowInQuestion.lastIndexOf("?")
         if (lastIndex === 7 && firstIndex === 3) {
-            puzzles[route.params.index].clue2.splice(3, 1, j)
+            rowInQuestion.splice(3, 1, row + 1)
         }
         if (firstIndex === 0 && lastIndex === 4) {
-            puzzles[route.params.index].clue2.splice(4, 1, j)
+            rowInQuestion.splice(4, 1, row + 1)
         }
-        if (lastIndex < 4 && puzzles[route.params.index].clue2[lastIndex + 1] !== "?") {
-            puzzles[route.params.index].clue2.splice(lastIndex, 1, j)
-        } else if (firstIndex > 3 && puzzles[route.params.index].clue2[firstIndex - 1] !== "?") {
-            puzzles[route.params.index].clue2.splice(firstIndex, 1, j)
-        } else if (lastIndex > 4 && puzzles[route.params.index].clue2[lastIndex - 1] !== "?") {
-            puzzles[route.params.index].clue2.splice(lastIndex, 1, j)
-        } else if (firstIndex < 3 && puzzles[route.params.index].clue2[firstIndex + 1] !== "?") {
-            puzzles[route.params.index].clue2.splice(firstIndex, 1, j)
+        if (lastIndex < 4 && rowInQuestion[lastIndex + 1] !== "?") {
+            rowInQuestion.splice(lastIndex, 1, row + 1)
+        } else if (firstIndex > 3 && rowInQuestion[firstIndex - 1] !== "?") {
+            rowInQuestion.splice(firstIndex, 1, row + 1)
+        } else if (lastIndex > 4 && rowInQuestion[lastIndex - 1] !== "?") {
+            rowInQuestion.splice(lastIndex, 1, row + 1)
+        } else if (firstIndex < 3 && rowInQuestion[firstIndex + 1] !== "?") {
+            rowInQuestion.splice(firstIndex, 1, row + 1)
         } else if (firstIndex === 0 && lastIndex === 7) {
-            if (puzzles[route.params.index].clue2[lastIndex - 2] !== "?") {
-                puzzles[route.params.index].clue2.splice(lastIndex - 1, 1, j)
-            } else if (puzzles[route.params.index].clue2[firstIndex + 2] !== "?") {
-                puzzles[route.params.index].clue2.splice(firstIndex + 1, 1, j)
-            }
-        }
-    }
-
-    function numberify3(j) {
-        let firstIndex = puzzles[route.params.index].clue3.indexOf("?")
-        let lastIndex = puzzles[route.params.index].clue3.lastIndexOf("?")
-        if (lastIndex === 7 && firstIndex === 3) {
-            puzzles[route.params.index].clue3.splice(3, 1, j)
-        }
-        if (firstIndex === 0 && lastIndex === 4) {
-            puzzles[route.params.index].clue3.splice(4, 1, j)
-        }
-        if (lastIndex < 4 && puzzles[route.params.index].clue3[lastIndex + 1] !== "?") {
-            puzzles[route.params.index].clue3.splice(lastIndex, 1, j)
-        } else if (firstIndex > 3 && puzzles[route.params.index].clue3[firstIndex - 1] !== "?") {
-            puzzles[route.params.index].clue3.splice(firstIndex, 1, j)
-        } else if (lastIndex > 4 && puzzles[route.params.index].clue3[lastIndex - 1] !== "?") {
-            puzzles[route.params.index].clue3.splice(lastIndex, 1, j)
-        } else if (firstIndex < 3 && puzzles[route.params.index].clue3[firstIndex + 1] !== "?") {
-            puzzles[route.params.index].clue3.splice(firstIndex, 1, j)
-        } else if (firstIndex === 0 && lastIndex === 7) {
-            if (puzzles[route.params.index].clue3[lastIndex - 2] !== "?") {
-                puzzles[route.params.index].clue3.splice(lastIndex - 1, 1, j)
-            } else if (puzzles[route.params.index].clue3[firstIndex + 2] !== "?") {
-                puzzles[route.params.index].clue3.splice(firstIndex + 1, 1, j)
-            }
-        }
-    }
-
-    function numberify4(j) {
-        let firstIndex = puzzles[route.params.index].clue4.indexOf("?")
-        let lastIndex = puzzles[route.params.index].clue4.lastIndexOf("?")
-        if (lastIndex === 7 && firstIndex === 3) {
-            puzzles[route.params.index].clue4.splice(3, 1, j)
-        }
-        if (firstIndex === 0 && lastIndex === 4) {
-            puzzles[route.params.index].clue4.splice(4, 1, j)
-        }
-        if (lastIndex < 4 && puzzles[route.params.index].clue4[lastIndex + 1] !== "?") {
-            puzzles[route.params.index].clue4.splice(lastIndex, 1, j)
-        } else if (firstIndex > 3 && puzzles[route.params.index].clue4[firstIndex - 1] !== "?") {
-            puzzles[route.params.index].clue4.splice(firstIndex, 1, j)
-        } else if (lastIndex > 4 && puzzles[route.params.index].clue4[lastIndex - 1] !== "?") {
-            puzzles[route.params.index].clue4.splice(lastIndex, 1, j)
-        } else if (firstIndex < 3 && puzzles[route.params.index].clue4[firstIndex + 1] !== "?") {
-            puzzles[route.params.index].clue4.splice(firstIndex, 1, j)
-        } else if (firstIndex === 0 && lastIndex === 7) {
-            if (puzzles[route.params.index].clue4[lastIndex - 2] !== "?") {
-                puzzles[route.params.index].clue4.splice(lastIndex - 1, 1, j)
-            } else if (puzzles[route.params.index].clue4[firstIndex + 2] !== "?") {
-                puzzles[route.params.index].clue4.splice(firstIndex + 1, 1, j)
+            if (rowInQuestion[lastIndex - 2] !== "?") {
+                rowInQuestion.splice(lastIndex - 1, 1, row + 1)
+            } else if (rowInQuestion[firstIndex + 2] !== "?") {
+                rowInQuestion.splice(firstIndex + 1, 1, row + 1)
             }
         }
     }
@@ -438,13 +375,13 @@ function Level({ route }) {
         )
     }
 
-    function clue1(index) {
-        if (puzzles[route.params.index].clue1[index] === "?") {
+    function clue(row, index) {
+        if (puzzles[route.params.index].clues[row][index] === "?") {
             return (
                 <View style={styles.emptyBox}></View>
             )
         }
-        if (puzzles[route.params.index].clue1[index] === "!") {
+        if (puzzles[route.params.index].clues[row][index] === "!") {
             return (
                 <View style={styles.inputBox}>
                     <TextInput
@@ -456,33 +393,33 @@ function Level({ route }) {
                 </View>
             )
         }
-        if (typeof puzzles[route.params.index].clue1[index] === "number") {
+        if (typeof puzzles[route.params.index].clues[row][index] === "number") {
             if (index >= 4) {
-                if (puzzles[route.params.index].clue1[index - 1] !== "?") {
+                if (puzzles[route.params.index].clues[row][index - 1] !== "?") {
                     return (
                         <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue1[index]}</Text>
+                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clues[row][index]}</Text>
                         </View>
                     )
                 } else {
                     return (
                         <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue1[index]}</Text>
+                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clues[row][index]}</Text>
                         </View>
                     )
                 }
             }
             if (index <= 3) {
-                if (puzzles[route.params.index].clue1[index + 1] !== "?") {
+                if (puzzles[route.params.index].clues[row][index + 1] !== "?") {
                     return (
                         <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue1[index]}</Text>
+                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clues[row][index]}</Text>
                         </View>
                     )
                 } else {
                     return (
                         <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue1[index]}</Text>
+                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clues[row][index]}</Text>
                         </View>
                     )
                 }
@@ -491,184 +428,7 @@ function Level({ route }) {
         else {
             return (
                 <View style={styles.inputBox}>
-                    <Text style={styles.letterInput}>{puzzles[route.params.index].clue1[index]}</Text>
-                </View>
-            )
-        }
-    }
-
-    function clue2(index) {
-        if (puzzles[route.params.index].clue2[index] === "?") {
-            return (
-                <View style={styles.emptyBox}></View>
-            )
-        }
-        if (puzzles[route.params.index].clue2[index] === "!") {
-            return (
-                <View style={styles.inputBox}>
-                    <TextInput
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInputLight}
-                        maxLength={1}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-            )
-        }
-        if (typeof puzzles[route.params.index].clue2[index] === "number") {
-            if (index >= 4) {
-                if (puzzles[route.params.index].clue2[index - 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue2[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue2[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-            if (index <= 3) {
-                if (puzzles[route.params.index].clue2[index + 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue2[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue2[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-        }
-        else {
-            return (
-                <View style={styles.inputBox}>
-                    <Text style={styles.letterInput}>{puzzles[route.params.index].clue2[index]}</Text>
-                </View>
-            )
-        }
-    }
-
-    function clue3(index) {
-        if (puzzles[route.params.index].clue3[index] === "?") {
-            return (
-                <View style={styles.emptyBox}></View>
-            )
-        }
-        if (puzzles[route.params.index].clue3[index] === "!") {
-            return (
-                <View style={styles.inputBox}>
-                    <TextInput
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInputLight}
-                        maxLength={1}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-            )
-        }
-        if (typeof puzzles[route.params.index].clue3[index] === "number") {
-            if (index >= 4) {
-                if (puzzles[route.params.index].clue3[index - 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue3[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue3[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-            if (index <= 3) {
-                if (puzzles[route.params.index].clue3[index + 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue3[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue3[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-        }
-        else {
-            return (
-                <View style={styles.inputBox}>
-                    <Text style={styles.letterInput}>{puzzles[route.params.index].clue3[index]}</Text>
-                </View>
-            )
-        }
-    }
-
-    function clue4(index) {
-        if (puzzles[route.params.index].clue4[index] === "?") {
-            return (
-                <View style={styles.emptyBox}></View>
-            )
-        }
-        if (puzzles[route.params.index].clue4[index] === "!") {
-            return (
-                <View style={styles.inputBox}>
-                    <TextInput
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInputLight}
-                        maxLength={1}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-            )
-        }
-        if (typeof puzzles[route.params.index].clue4[index] === "number") {
-            if (index >= 4) {
-                if (puzzles[route.params.index].clue4[index - 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue4[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue4[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-            if (index <= 3) {
-                if (puzzles[route.params.index].clue4[index + 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clue4[index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clue4[index]}</Text>
-                        </View>
-                    )
-                }
-            }
-        }
-        else {
-            return (
-                <View style={styles.inputBox}>
-                    <Text style={styles.letterInput}>{puzzles[route.params.index].clue4[index]}</Text>
+                    <Text style={styles.letterInput}>{puzzles[route.params.index].clues[row][index]}</Text>
                 </View>
             )
         }
@@ -676,50 +436,50 @@ function Level({ route }) {
 
     function allTheClues() {
         return (
-            <View style={cluesDifficulty()}>
+            <View style={difficulty(2)}>
                 <View style={styles.clueRow}>
-                    {numberify1(1)}
-                    {clue1(0)}
-                    {clue1(1)}
-                    {clue1(2)}
-                    {clue1(3)}
-                    {clue1(4)}
-                    {clue1(5)}
-                    {clue1(6)}
-                    {clue1(7)}
+                    {numberify(0)}
+                    {clue(0, 0)}
+                    {clue(0, 1)}
+                    {clue(0, 2)}
+                    {clue(0, 3)}
+                    {clue(0, 4)}
+                    {clue(0, 5)}
+                    {clue(0, 6)}
+                    {clue(0, 7)}
                 </View>
                 <View style={styles.clueRow}>
-                    {numberify2(2)}
-                    {clue2(0)}
-                    {clue2(1)}
-                    {clue2(2)}
-                    {clue2(3)}
-                    {clue2(4)}
-                    {clue2(5)}
-                    {clue2(6)}
-                    {clue2(7)}
+                    {numberify(1)}
+                    {clue(1, 0)}
+                    {clue(1, 1)}
+                    {clue(1, 2)}
+                    {clue(1, 3)}
+                    {clue(1, 4)}
+                    {clue(1, 5)}
+                    {clue(1, 6)}
+                    {clue(1, 7)}
                 </View>
                 <View style={styles.clueRow}>
-                    {numberify3(3)}
-                    {clue3(0)}
-                    {clue3(1)}
-                    {clue3(2)}
-                    {clue3(3)}
-                    {clue3(4)}
-                    {clue3(5)}
-                    {clue3(6)}
-                    {clue3(7)}
+                    {numberify(2)}
+                    {clue(2, 0)}
+                    {clue(2, 1)}
+                    {clue(2, 2)}
+                    {clue(2, 3)}
+                    {clue(2, 4)}
+                    {clue(2, 5)}
+                    {clue(2, 6)}
+                    {clue(2, 7)}
                 </View>
                 <View style={styles.clueRow}>
-                    {numberify4(4)}
-                    {clue4(0)}
-                    {clue4(1)}
-                    {clue4(2)}
-                    {clue4(3)}
-                    {clue4(4)}
-                    {clue4(5)}
-                    {clue4(6)}
-                    {clue4(7)}
+                    {numberify(3)}
+                    {clue(3, 0)}
+                    {clue(3, 1)}
+                    {clue(3, 2)}
+                    {clue(3, 3)}
+                    {clue(3, 4)}
+                    {clue(3, 5)}
+                    {clue(3, 6)}
+                    {clue(3, 7)}
                 </View>
             </View>
         )
@@ -778,7 +538,7 @@ function Level({ route }) {
         let theRightAnswer = puzzles[route.params.index].answer.join("")
         if (!letter1 || !letter2 || !letter3 || !letter4 || !letter5 || !letter6 || !letter7 || !letter8) {
             return (
-                <View style={statusDifficulty()}>
+                <View style={difficulty(4)}>
                     <Text style={styles.statusTitle}>{puzzles[route.params.index].statusTitle}</Text>
                     <Text style={styles.statusText}>{puzzles[route.params.index].encouragement}</Text>
                 </View>
@@ -786,7 +546,7 @@ function Level({ route }) {
         }
         if (letter1 && letter2 && letter3 && letter4 && letter5 && letter6 && letter7 && letter8 && yourNewAnswer.toUpperCase() !== theRightAnswer) {
             return (
-                <View style={statusDifficulty()}>
+                <View style={difficulty(4)}>
                     <Text style={styles.statusTitle}>Not quite...</Text>
                     <Text style={styles.statusText}>{yourNewAnswer} is not the correct answer.</Text>
                     <Text style={styles.statusText}>Keep trying!</Text>
@@ -795,10 +555,8 @@ function Level({ route }) {
         }
         if (yourNewAnswer.toUpperCase() === theRightAnswer) {
             setLevelComplete(value);
-            getLevelStatus(value);
-            logCurrentStorage();
             return (
-                <View style={statusDifficulty()}>
+                <View style={difficulty(4)}>
                     <Text style={styles.statusTitle}>Congratulations!</Text>
                     <Text style={styles.statusText}>{yourNewAnswer} is the correct answer!</Text>
                     <Text style={styles.statusFunFact}>Fun fact: {puzzles[route.params.index].funFact}</Text>
@@ -818,43 +576,12 @@ function Level({ route }) {
         }
     }
 
-
-    const clearAll = async () => {
-        try {
-          await AsyncStorage.clear()
-        } catch(e) {
-        console.log(e)
-        }  
-        console.log('Deleted.')
-    } 
-
     const setLevelComplete = async (value) => {
         try {
             const item = JSON.stringify(value);
             await AsyncStorage.setItem(`${item}`, "1")
         } catch(e) {
         }
-    }
-
-    const getLevelStatus = async (value) => {
-        try {
-            const item = JSON.stringify(value);
-            return await AsyncStorage.getItem(`${item}`)
-        }  
-        catch(e) {
-        }
-    }
-
-    function logCurrentStorage() {
-        AsyncStorage.getAllKeys().then((keyArray) => {
-          AsyncStorage.multiGet(keyArray).then((keyValArray) => {
-            let myStorage = {};
-            for (let keyVal of keyValArray) {
-              myStorage[keyVal[0]] = keyVal[1]
-            }
-            console.log('CURRENT STORAGE: ', myStorage);
-          })
-        });
     }
 
     React.useEffect(() => {
@@ -878,7 +605,7 @@ function Level({ route }) {
             </View>
             {levelTheme()}
             {allTheClues()}
-            <View style={hintsDifficulty()}>
+            <View style={difficulty(3)}>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
                 <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
@@ -916,7 +643,7 @@ const styles = StyleSheet.create({
     },
     themeBoxEasy: {
         height: 125,
-        backgroundColor: easy_header,
+        backgroundColor: easy,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 25,
@@ -925,7 +652,7 @@ const styles = StyleSheet.create({
     themeBoxMedium: {
         height: 125,
         marginHorizontal: 7.5,
-        backgroundColor: medium_header,
+        backgroundColor: medium,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 10,
@@ -934,7 +661,7 @@ const styles = StyleSheet.create({
     themeBoxHard: {
         height: 125,
         marginHorizontal: 7.5,
-        backgroundColor: hard_header,
+        backgroundColor: hard,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 10,
@@ -943,7 +670,7 @@ const styles = StyleSheet.create({
     themeBoxVeryHard: {
         height: 125,
         marginHorizontal: 7.5,
-        backgroundColor: very_hard_header,
+        backgroundColor: very_hard,
         display: 'flex',
         justifyContent: 'center',
         borderTopLeftRadius: 10,
