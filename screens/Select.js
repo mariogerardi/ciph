@@ -76,7 +76,7 @@ function SelectScreen() {
             <View style={styles.header}>
                 <TouchableOpacity 
                     style={styles.back}
-                    onPress={() => navigation.navigate('Home')}
+                    onPress={() => navigation.popToTop()}
                     >
                     <Image 
                         style={styles.button} 
@@ -86,8 +86,9 @@ function SelectScreen() {
             </View>
             <Text style={styles.progressHeader}>Levels Completed:</Text>
             <Text style={styles.progress}>{getValue.length}/80</Text>
-        {level()}
-        <View style={styles.bottom}></View>
+            {level()}
+            <View style={styles.bottom}>
+            </View>
         </ScrollView>
     );
 }
@@ -188,7 +189,8 @@ const styles = StyleSheet.create({
     progress: {
         textAlign: 'center',
         fontSize: 55,
-        fontFamily: 'KohinoorTelugu-Light'
+        fontFamily: 'KohinoorTelugu-Light',
+        marginBottom: 10,
     },
     header: {
         marginTop: 45,

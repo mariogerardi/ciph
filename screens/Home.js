@@ -26,7 +26,7 @@ function HomeScreen() {
             <TouchableOpacity
                 title="Levels"
                 style={styles.button3}
-                onPress={() => navigation.navigate('Select')}>
+                onPress={() => navigation.navigate('About')}>
                 <Text style={styles.buttonText}>About</Text>
             </TouchableOpacity>
             <TouchableOpacity
