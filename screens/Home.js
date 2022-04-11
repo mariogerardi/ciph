@@ -8,7 +8,7 @@ function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.home}>
-            <Text style={styles.logo}>Word Game</Text>
+            <Text style={styles.logo}>Decipher</Text>
             <TouchableOpacity
                 title="Levels"
                 style={styles.button1}

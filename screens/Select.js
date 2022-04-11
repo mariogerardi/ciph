@@ -19,7 +19,9 @@ function SelectScreen() {
         }
     }
 
-    importData();
+    React.useEffect(() => {
+        importData();
+    }, []);
 
     function level() {
 
