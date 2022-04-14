@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { StyleSheet, View, Text, Pressable, Image } from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import puzzles from '../assets/puzzles';
@@ -39,13 +39,13 @@ function Congrats({route}) {
         <View style={[styles.congrats, difficulty(route.params)]}>
             <Text style={styles.header}>Congratulations!</Text>
             <Text style={styles.text}>{route.params.data} was the correct answer.</Text>
-            <Pressable
+            <TouchableOpacity
                 style={styles.back}
                 onPress={() => navigation.navigate("Select")}>
                 <Image
                     style={styles.button}
                     source={require("../assets/arrow.png")}/>
-            </Pressable>
+            </TouchableOpacity>
             <Text style={styles.backText}>Back to Level Select.</Text>
             <Text style={styles.funFact}>Fun fact: {puzzles[route.params.value - 1].funFact}</Text>
         </View>
@@ -112,7 +112,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#50ACE5',
     },
     hard: {
-        backgroundColor: '#D4903C',
+        backgroundColor: '#F4901C',
     },
     very_hard: {
         backgroundColor: '#403C95',

@@ -34,12 +34,12 @@ const styles = StyleSheet.create({
     hints: {
         height: 400,
         paddingVertical: 7.5,
-        paddingHorizontal: 15,
+        paddingHorizontal: 10,
     },
     hint: {
         color: 'white',
         marginVertical: 2.5,
-        fontSize: 15,
+        fontSize: 16,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "500",
     },

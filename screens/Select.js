@@ -151,8 +151,8 @@ const styles = StyleSheet.create({
         borderColor: '#50ACE5',
     },
     hard_unbeaten: {
-        backgroundColor: '#D4903C',
-        borderColor: '#D4903C',
+        backgroundColor: '#F4901C',
+        borderColor: '#F4901C',
     },
     very_hard_unbeaten: {
         backgroundColor: '#403C95',

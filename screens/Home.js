@@ -101,7 +101,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#50ACE5',
     },
     hard: {
-        backgroundColor: '#D4903C',
+        backgroundColor: '#F4901C',
     },
     very_hard: {
         backgroundColor: '#403C95',
