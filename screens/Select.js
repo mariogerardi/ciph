@@ -13,6 +13,21 @@ function SelectScreen() {
         importData();
     }, [getValue]);
 
+    function difficulty(data) {
+        if (data.value - 1 < 20) {
+            return styles.easy;
+        }
+        if (data.value - 1 < 40) {
+            return styles.medium;
+        }
+        if (data.value - 1 < 60) {
+            return styles.hard;
+        }
+        if (data.value - 1 < 80) {
+            return styles.very_hard;
+        }
+    }
+
     async function importData() {
         try {
             const keys = await AsyncStorage.getAllKeys();
@@ -37,7 +52,7 @@ function SelectScreen() {
                 {levels.map((value, index) => {
                     return (
                         <TouchableOpacity 
-                            style={levelStyles(value)} 
+                            style={[styles.level, difficulty(value), levelStyles(value)]} 
                             key={index}
                             onPress={() => navigation.navigate('Level', {
                                 index: index
@@ -60,16 +75,16 @@ function SelectScreen() {
             }
         }
         if (value < 21) {
-            return styles.level1
+            return styles.easy_unbeaten
         }
         if (value < 41) {
-            return styles.level2
+            return styles.medium_unbeaten
         }
         if (value < 61) {
-            return styles.level3
+            return styles.hard_unbeaten
         }
         if (value < 81) {
-            return styles.level4
+            return styles.very_hard_unbeaten
         }
     }
 
@@ -111,75 +126,43 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         flexWrap: 'wrap'
     },
-    level1: {
+    level: {
         width: 75,
         height: 75,
         marginVertical: 7.5,
         marginHorizontal: 7.5,
-        borderWidth: 1,
+        borderWidth: 5,
         borderColor: 'white',
         borderRadius: 15,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: '#30A47C'
-    },
-    level2: {
-        width: 75,
-        height: 75,
-        marginVertical: 7.5,
-        marginHorizontal: 7.5,
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 15,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#50ACE5'
-    },
-    level3: {
-        width: 75,
-        height: 75,
-        marginVertical: 7.5,
-        marginHorizontal: 7.5,
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 15,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#D4903C'
-    },
-    level4: {
-        width: 75,
-        height: 75,
-        marginVertical: 7.5,
-        marginHorizontal: 7.5,
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 15,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#403C95'
     },
     complete: {
-        width: 75,
-        height: 75,
-        marginVertical: 7.5,
-        marginHorizontal: 7.5,
-        borderWidth: 1,
-        borderColor: 'white',
-        borderRadius: 15,
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: '#FFB530'
+        backgroundColor: '#FFB530',
+        borderColor: '#FFB530',
+    },
+    easy_unbeaten: {
+        backgroundColor: '#30A47C',
+        borderColor: '#30A47C',
+    },
+    medium_unbeaten: {
+        backgroundColor: '#50ACE5',
+        borderColor: '#50ACE5',
+    },
+    hard_unbeaten: {
+        backgroundColor: '#D4903C',
+        borderColor: '#D4903C',
+    },
+    very_hard_unbeaten: {
+        backgroundColor: '#403C95',
+        borderColor: '#403C95',
     },
     id: {
-        color: '#e9e9e9',
-        fontSize: 38,
-        fontFamily: 'KohinoorTelugu-Light'
+        fontSize: 42,
+        fontFamily: 'KohinoorTelugu-Light',
+        fontWeight: '900',
+        color: 'white'
     },
     progressHeader: {
         textAlign: 'center',

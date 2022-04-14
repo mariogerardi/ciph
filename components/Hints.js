@@ -32,7 +32,7 @@ export default Hints;
 
 const styles = StyleSheet.create({
     hints: {
-        height: 375,
+        height: 400,
         paddingVertical: 7.5,
         paddingHorizontal: 15,
     },

@@ -162,13 +162,13 @@ const styles = StyleSheet.create({
     clueRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 15,
+        marginHorizontal: 10,
         marginVertical: 5,
         justifyContent: 'space-between'
     },
     inputBox: {
-        width: 41,
-        height: 41,
+        width: 42,
+        height: 42,
         backgroundColor: '#f9f9f9',
         display: 'flex',
         alignItems: 'center',
@@ -176,16 +176,16 @@ const styles = StyleSheet.create({
         borderRadius: 4,
     },
     numberBox: {
-        width: 41,
-        height: 41,
+        width: 42,
+        height: 42,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'flex-start',
         borderRadius: 4,
     },
     emptyBox: {
-        width: 41,
-        height: 41,
+        width: 42,
+        height: 42,
     },
     letterInput: {
         width: 42,

@@ -8,6 +8,9 @@ import Settings from './screens/Settings'
 import Tutorial from './screens/Tutorial'
 import About from './screens/About'
 import Congrats from './screens/Congrats'
+import { LogBox } from 'react-native';
+
+LogBox.ignoreLogs(['Warning: ...']);
 
 const Stack = createNativeStackNavigator();
 

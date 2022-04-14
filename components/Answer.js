@@ -220,23 +220,22 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 25,
     },
     themeText: {
-        fontSize: 36,
+        fontSize: 39,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "600",
         color: 'white',
         alignSelf: 'center',
-        marginTop: 5,
-        marginBottom: 10,
+        marginBottom: 5,
     },
     answerRow: {
         display: 'flex',
         flexDirection: 'row',
-        marginHorizontal: 15,
+        marginHorizontal: 10,
         justifyContent: 'space-between'
     },
     inputBox: {
-        width: 41,
-        height: 41,
+        width: 42,
+        height: 42,
         backgroundColor: '#f9f9f9',
         display: 'flex',
         alignItems: 'center',
