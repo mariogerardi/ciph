@@ -8,16 +8,16 @@ function HomeScreen() {
 
     return (
         <SafeAreaView style={styles.home}>
-            <Text style={styles.logo}>Decipher</Text>
+            <Text style={styles.logo}>CIPHE</Text>
             <TouchableOpacity
                 title="Levels"
-                style={styles.button1}
+                style={[styles.button, styles.easy, styles.tilt_right]}
                 onPress={() => navigation.navigate('Select')}>
                 <Text style={styles.buttonText}>Levels</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 title="Levels"
-                style={styles.button2}
+                style={[styles.button, styles.medium, styles.tilt_left]}
                 onPress={() => navigation.navigate('Tutorial', {
                     index: 0
                 })}>
@@ -25,13 +25,13 @@ function HomeScreen() {
             </TouchableOpacity>
             <TouchableOpacity
                 title="Levels"
-                style={styles.button3}
+                style={[styles.button, styles.hard, styles.tilt_right]}
                 onPress={() => navigation.navigate('About')}>
                 <Text style={styles.buttonText}>About</Text>
             </TouchableOpacity>
             <TouchableOpacity
                 title="Levels"
-                style={styles.button4}
+                style={[styles.button, styles.very_hard, styles.tilt_left]}
                 onPress={() => navigation.navigate('Settings')}>
                 <Text style={styles.buttonText}>Settings</Text>
             </TouchableOpacity>
@@ -47,56 +47,42 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     logo: {
-        marginVertical: 75,
+        marginTop: 75,
+        marginBottom: 100,
         fontSize: 60,
         fontFamily: 'KohinoorTelugu-Light'
     },
-    button1: {
+    button: {
         width: 250,
         height: 75,
-        backgroundColor: '#30A47C',
         borderRadius: 20,
+        marginBottom: 50,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        transform: [{rotate: '2deg'}]
-    },
-    button2: {
-        width: 250,
-        height: 75,
-        backgroundColor: '#50ACE5',
-        borderRadius: 20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transform: [{rotate: '-2deg'}],
-        marginVertical: 50
-    },
-    button3: {
-        width: 250,
-        height: 75,
-        backgroundColor: '#D4903C',
-        borderRadius: 20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transform: [{rotate: '2deg'}]
-    },
-    button4: {
-        width: 250,
-        height: 75,
-        backgroundColor: '#403C95',
-        borderRadius: 20,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        transform: [{rotate: '-2deg'}],
-        marginVertical: 50
     },
     buttonText: {
         fontSize: 35,
         fontFamily: 'KohinoorTelugu-Light',
         fontWeight: "400",
         color: 'white'
+    },
+    easy: {
+        backgroundColor: '#30A47C',
+    },
+    medium: {
+        backgroundColor: '#50ACE5',
+    },
+    hard: {
+        backgroundColor: '#D4903C',
+    },
+    very_hard: {
+        backgroundColor: '#403C95',
+    },
+    tilt_left: {
+        transform: [{rotate: "2deg"}]
+    },
+    tilt_right: {
+        transform: [{rotate: "-2deg"}]
     }
 })

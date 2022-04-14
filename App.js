@@ -7,6 +7,7 @@ import Level from './screens/Level';
 import Settings from './screens/Settings'
 import Tutorial from './screens/Tutorial'
 import About from './screens/About'
+import Congrats from './screens/Congrats'
 
 const Stack = createNativeStackNavigator();
 
@@ -22,6 +23,8 @@ function App() {
                     name="Select" component={SelectScreen} />
                 <Stack.Screen 
                     name="Level" component={Level} />
+                <Stack.Screen 
+                    name="Congrats" component={Congrats} />
                 <Stack.Screen 
                     name="Tutorial" component={Tutorial} />
                 <Stack.Screen 

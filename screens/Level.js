@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { StyleSheet, ScrollView, View, Text, Pressable, Image, TextInput } from 'react-native';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import puzzles from '../components/puzzles';
+import { StyleSheet, ScrollView, View, Text, TouchableOpacity, Image } from 'react-native';
+import puzzles from '../assets/puzzles';
+import Answer from '../components/Answer';
+import Clues from '../components/Clues';
+import Hints from '../components/Hints'
 
 const easy = '#30A47C'
 const medium = '#50ACE5'
@@ -14,15 +16,7 @@ function Level({ route }) {
     const navigation = useNavigation();
 
     let value = route.params.index + 1;
-
-    function levelTheme() {
-        return (
-            <View style={difficulty(1)}>
-                <Text style={styles.themeText}>{puzzles[route.params.index].theme}</Text>
-                {answerBox()}
-            </View>
-        )
-    }
+    let data = {value: value}
 
     function difficulty(section) {
         if (section === 1) {
@@ -83,255 +77,6 @@ function Level({ route }) {
         }
     }
 
-    function numberify(row) {
-        let rowInQuestion = puzzles[route.params.index].clues[row]
-        let firstIndex = rowInQuestion.indexOf("?")
-        let lastIndex = rowInQuestion.lastIndexOf("?")
-        if (lastIndex === 7 && firstIndex === 3) {
-            rowInQuestion.splice(3, 1, row + 1)
-        }
-        if (firstIndex === 0 && lastIndex === 4) {
-            rowInQuestion.splice(4, 1, row + 1)
-        }
-        if (lastIndex < 4 && rowInQuestion[lastIndex + 1] !== "?") {
-            rowInQuestion.splice(lastIndex, 1, row + 1)
-        } else if (firstIndex > 3 && rowInQuestion[firstIndex - 1] !== "?") {
-            rowInQuestion.splice(firstIndex, 1, row + 1)
-        } else if (lastIndex > 4 && rowInQuestion[lastIndex - 1] !== "?") {
-            rowInQuestion.splice(lastIndex, 1, row + 1)
-        } else if (firstIndex < 3 && rowInQuestion[firstIndex + 1] !== "?") {
-            rowInQuestion.splice(firstIndex, 1, row + 1)
-        } else if (firstIndex === 0 && lastIndex === 7) {
-            if (rowInQuestion[lastIndex - 2] !== "?") {
-                rowInQuestion.splice(lastIndex - 1, 1, row + 1)
-            } else if (rowInQuestion[firstIndex + 2] !== "?") {
-                rowInQuestion.splice(firstIndex + 1, 1, row + 1)
-            }
-        }
-    }
-
-    function answerBox() {
-        return (
-            <View style={styles.answerRow}>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId1}
-                        onChangeText={text => {keepTrack(1, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus(); setLetter1(null) } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId2}
-                        onChangeText={text => {keepTrack(2, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId1.current.focus(); setLetter2(null) } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId3}
-                        onChangeText={text => {keepTrack(3, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId2.current.focus(); setLetter3(null) } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId4}
-                        onChangeText={text => {keepTrack(4, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId3.current.focus(); setLetter4(null)  } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId5}
-                        onChangeText={text => {keepTrack(5, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId4.current.focus(); setLetter5(null)  } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId6}
-                        onChangeText={text => {keepTrack(6, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId5.current.focus(); setLetter6(null)  } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId7}
-                        onChangeText={text => {keepTrack(7, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId6.current.focus(); setLetter7(null) } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-                <View style={styles.inputBox}>
-                    <TextInput
-                        editable = {isEditable()}
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInput}
-                        maxLength={1}
-                        ref={inputId8}
-                        onChangeText={text => {keepTrack(8, text)}}
-                        onKeyPress={({ nativeEvent }) => { if (nativeEvent.key === 'Backspace') { inputId7.current.focus(); setLetter8(null) } }}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-            </View>
-        )
-    }
-
-    function clue(row, index) {
-        if (puzzles[route.params.index].clues[row][index] === "?") {
-            return (
-                <View style={styles.emptyBox}></View>
-            )
-        }
-        if (puzzles[route.params.index].clues[row][index] === "!") {
-            return (
-                <View style={styles.inputBox}>
-                    <TextInput
-                        autoCapitalize = {"characters"}
-                        style={styles.letterInputLight}
-                        maxLength={1}
-                        autoCorrect={false}>
-                    </TextInput>
-                </View>
-            )
-        }
-        if (typeof puzzles[route.params.index].clues[row][index] === "number") {
-            if (index >= 4) {
-                if (puzzles[route.params.index].clues[row][index - 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clues[row][index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clues[row][index]}</Text>
-                        </View>
-                    )
-                }
-            }
-            if (index <= 3) {
-                if (puzzles[route.params.index].clues[row][index + 1] !== "?") {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputLeft}>{puzzles[route.params.index].clues[row][index]}</Text>
-                        </View>
-                    )
-                } else {
-                    return (
-                        <View style={styles.numberBox}>
-                            <Text style={styles.numberInputRight}>{puzzles[route.params.index].clues[row][index]}</Text>
-                        </View>
-                    )
-                }
-            }
-        }
-        else {
-            return (
-                <View style={styles.inputBox}>
-                    <Text style={styles.letterInput}>{puzzles[route.params.index].clues[row][index]}</Text>
-                </View>
-            )
-        }
-    }
-
-    const allTheClues = () => {
-        return (
-            <View style={difficulty(2)}>
-                <View style={styles.clueRow}>
-                    {numberify(0)}
-                    {clue(0, 0)}
-                    {clue(0, 1)}
-                    {clue(0, 2)}
-                    {clue(0, 3)}
-                    {clue(0, 4)}
-                    {clue(0, 5)}
-                    {clue(0, 6)}
-                    {clue(0, 7)}
-                </View>
-                <View style={styles.clueRow}>
-                    {numberify(1)}
-                    {clue(1, 0)}
-                    {clue(1, 1)}
-                    {clue(1, 2)}
-                    {clue(1, 3)}
-                    {clue(1, 4)}
-                    {clue(1, 5)}
-                    {clue(1, 6)}
-                    {clue(1, 7)}
-                </View>
-                <View style={styles.clueRow}>
-                    {numberify(2)}
-                    {clue(2, 0)}
-                    {clue(2, 1)}
-                    {clue(2, 2)}
-                    {clue(2, 3)}
-                    {clue(2, 4)}
-                    {clue(2, 5)}
-                    {clue(2, 6)}
-                    {clue(2, 7)}
-                </View>
-                <View style={styles.clueRow}>
-                    {numberify(3)}
-                    {clue(3, 0)}
-                    {clue(3, 1)}
-                    {clue(3, 2)}
-                    {clue(3, 3)}
-                    {clue(3, 4)}
-                    {clue(3, 5)}
-                    {clue(3, 6)}
-                    {clue(3, 7)}
-                </View>
-            </View>
-        )
-    };
-
-    const inputId1 = React.useRef();
-    const inputId2 = React.useRef();
-    const inputId3 = React.useRef();
-    const inputId4 = React.useRef();
-    const inputId5 = React.useRef();
-    const inputId6 = React.useRef();
-    const inputId7 = React.useRef();
-    const inputId8 = React.useRef();
-
     const [letter1, setLetter1] = React.useState(null);
     const [letter2, setLetter2] = React.useState(null);
     const [letter3, setLetter3] = React.useState(null);
@@ -342,43 +87,6 @@ function Level({ route }) {
     const [letter8, setLetter8] = React.useState(null);
 
     let yourAnswer = [letter1, letter2, letter3, letter4, letter5, letter6, letter7, letter8]
-
-    function keepTrack(letterID, text) { 
-        if (text !== "") { 
-            if (letterID === 1) {
-                setLetter1(text)
-                inputId2.current.focus() 
-            }
-            if (letterID === 2) {
-                setLetter2(text)
-                inputId3.current.focus() 
-            }
-            if (letterID === 3) {
-                setLetter3(text)
-                inputId4.current.focus() 
-            }
-            if (letterID === 4) {
-                setLetter4(text)
-                inputId5.current.focus() 
-            }
-            if (letterID === 5) {
-                setLetter5(text)
-                inputId6.current.focus() 
-            }
-            if (letterID === 6) {
-                setLetter6(text)
-                inputId7.current.focus() 
-            }
-            if (letterID === 7) {
-                setLetter7(text)
-                inputId8.current.focus() 
-            }
-            if (letterID === 8) { 
-                setLetter8(text)
-                inputId8.current.focus() 
-            }
-        }
-    }
 
     function check() {
         let yourNewAnswer = yourAnswer.join("")
@@ -402,44 +110,17 @@ function Level({ route }) {
         }
         if (yourNewAnswer.toUpperCase() === theRightAnswer) {
             setLevelComplete(value);
-            return (
-                <View style={difficulty(4)}>
-                    <Text style={styles.statusTitle}>Congratulations!</Text>
-                    <Text style={styles.statusText}>{yourNewAnswer} is the correct answer!</Text>
-                    <Text style={styles.statusFunFact}>Fun fact: {puzzles[route.params.index].funFact}</Text>
-                </View>
-            )
-        }
-    }
-
-    function isEditable() {
-        let yourNewAnswer = yourAnswer.join("")
-        let theRightAnswer = puzzles[route.params.index].answer.join("")
-        if (yourNewAnswer.toUpperCase() !== theRightAnswer) { 
-            return true;
-        }
-        if (yourNewAnswer.toUpperCase() === theRightAnswer) { 
-            return false
-        }
-    }
-
-    const setLevelComplete = async (value) => {
-        try {
-            const item = JSON.stringify(value);
-            await AsyncStorage.setItem(`${item}`, "1")
-        } catch(e) {
         }
     }
 
     React.useEffect(() => {
         check();
-        isEditable();
     });
 
     return (
         <ScrollView>
             <View style={styles.header}>
-                <Pressable
+                <TouchableOpacity
                     style={styles.back}
                     onPress={() => navigation.pop()}
                 >
@@ -447,18 +128,12 @@ function Level({ route }) {
                         style={styles.button}
                         source={require("../assets/arrow.png")}
                     />
-                </Pressable>
+                </TouchableOpacity>
                 <Text style={styles.levelId}>Level {value}</Text>
             </View>
-            {levelTheme()}
-            {allTheClues()}
-            <View style={difficulty(3)}>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[0]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[1]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[2]}</Text>
-                <Text style={styles.hint}>{puzzles[route.params.index].clueHints[3]}</Text>
-            </View>
-            {check()}
+            <Answer data={data}/>
+            <Clues data={data}/>
+            <Hints data={data}/>
         </ScrollView>
     );
 }

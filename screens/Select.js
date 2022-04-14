@@ -7,21 +7,21 @@ function SelectScreen() {
     
     const navigation = useNavigation();
 
-    const [getValue, setGetValue] = React.useState('0');
+    const [getValue, setGetValue] = React.useState(0);
+    
+    React.useEffect(() => {
+        importData();
+    }, [getValue]);
 
     async function importData() {
         try {
-          const keys = await AsyncStorage.getAllKeys();
-          const result = await AsyncStorage.multiGet(keys);
-          setGetValue(result)
+            const keys = await AsyncStorage.getAllKeys();
+            const result = await AsyncStorage.multiGet(keys);
+            setGetValue(result)
         } catch (error) {
-          console.error(error)
+            console.error(error)
         }
     }
-
-    React.useEffect(() => {
-        importData();
-    }, []);
 
     function level() {
 
