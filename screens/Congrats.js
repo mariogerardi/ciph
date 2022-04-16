@@ -42,11 +42,11 @@ function Congrats({route}) {
             <TouchableOpacity
                 style={styles.back}
                 onPress={() => navigation.navigate("Select")}>
+                <Text style={styles.backText}>Continue</Text>
                 <Image
                     style={styles.button}
                     source={require("../assets/arrow.png")}/>
             </TouchableOpacity>
-            <Text style={styles.backText}>Back to Level Select.</Text>
             <Text style={styles.funFact}>Fun fact: {puzzles[route.params.value - 1].funFact}</Text>
         </View>
     )
@@ -83,27 +83,24 @@ const styles = StyleSheet.create({
         color: 'white'
     },
     back: {
-        width: 80,
+        width: '55%',
         height: 80,
-        justifyContent: 'center',
+        justifyContent: 'space-around',
         alignItems: 'center',
-        top: 271,
-        right: 115,
-        borderWidth: 0,
-        borderRadius: 100,
-        backgroundColor: 'white'
+        flexDirection: 'row',
+        top: 260,
     },
     backText: {
         fontFamily: 'KohinoorTelugu-Light',
-        fontSize: 24,
-        top: 214,
-        left: 50,
+        fontSize: 35,
         color: 'white'
     },
     button: {
-        width: 65,
-        height: 65,
+        width: 50,
+        height: 50,
         padding: 10,
+        tintColor: 'white',
+        transform: [{scaleX: -1}]
     },
     easy: {
         backgroundColor: '#30A47C',

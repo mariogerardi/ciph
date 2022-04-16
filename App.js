@@ -10,7 +10,7 @@ import About from './screens/About'
 import Congrats from './screens/Congrats'
 import { LogBox } from 'react-native';
 
-LogBox.ignoreLogs(['Warning: ...']);
+LogBox.ignoreLogs([]);
 
 const Stack = createNativeStackNavigator();
 
